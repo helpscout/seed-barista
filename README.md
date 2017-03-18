@@ -1,4 +1,4 @@
-# seed-barista [![Build Status](https://travis-ci.org/helpscout/seed-harvester.svg?branch=master)](https://travis-ci.org/helpscout/seed-harvester) [![npm version](https://badge.fury.io/js/seed-harvester.svg)](https://badge.fury.io/js/seed-harvester) [![Dependency Status](https://david-dm.org/helpscout/seed-harvester.svg)](https://david-dm.org/helpscout/seed-harvester)
+# seed-barista
 
 Test runner helper for Seed CSS
 
@@ -17,8 +17,6 @@ npm install seed-barista --save-dev
 ```
 
 
----
-
 
 ## Basic Usage
 
@@ -35,8 +33,6 @@ describe('your CSS test', function() {
 });
 ```
 
-
----
 
 
 ## Output
@@ -122,8 +118,6 @@ var output = barista({
 }
 ```
 
-
----
 
 
 ## Options
