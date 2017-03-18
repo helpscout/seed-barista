@@ -1,6 +1,7 @@
 // Seed Barista :: Index
 'use strict';
 
+var css = require('css');
 var findRoot = require('find-root');
 var sass = require('node-sass');
 var path = require('path');
@@ -10,12 +11,12 @@ var _extend = require('./utils/extend');
 var root = findRoot(__dirname);
 var pathBase = path.basename(__dirname);
 
-var testPath = path.join(root, 'scss/pack/', pathBase),
+var testPath = path.join(root, 'scss/pack/', pathBase);
 
 // Default options
 var defaults = {
   testDir: path.join(root, 'test', 'scss'),
-  includePaths: pathfinder([require(path.join(root, 'index')),testPath,]);
+  includePaths: pathfinder([require(path.join(root, 'index')),testPath,]),
   testPath: path.join(root, 'scss/pack/', pathBase),
   file: null,
   data: null,
@@ -28,12 +29,12 @@ module.exports = function(options) {
   }
   options = _extend(defaults, options);
 
-  var sassOption = {
-    includePaths: option.includePaths,
+  var sassOptions = {
+    includePaths: options.includePaths,
   };
   // Update sassOptions with user defined options
   if (options.data && typeof options.data === 'string') {
-    sassOption.data = options.data;
+    sassOptions.data = options.data;
   }
   else if (options.file && typeof options.file === 'string') {
     sassOptions.file = path.join(options.testDir, options.file);
