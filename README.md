@@ -20,12 +20,14 @@ npm install seed-barista --save-dev
 
 ## Basic Usage
 
+Below is an example of how you can setup a [Mocha](https://mochajs.org/) test with Barista. A fast and simple way to test `.scss` output is to verify the rendered output matches against expected strings.
+
 ```javascript
 var assert = require('chai').assert;
 var barista = require('seed-barista');
 
 describe('your CSS test', function() {
-  it('should return false if no file is defined', function() {
+  it('should render a class of wizard + harry', function() {
     var output = barista({ file: '_wizard.scss' });
     var expect = output.css.indexOf('.your-a-wizard.harry {') >= 0;
     assert.equal(expect, true);
@@ -60,7 +62,7 @@ var output = barista({
 ```
 
 `output.data` results:
-```
+```json
 {
   "type": "stylesheet",
   "stylesheet": {
