@@ -4,7 +4,7 @@
 var assert = require('chai').assert;
 var barista = require('../index');
 
-describe('barista: { options: file }', function() {
+describe('barista { options: file }', function() {
   it('should return false if no file is defined', function() {
     var output = barista({ yourawizard: 'harry' });
     assert.equal(output, false);

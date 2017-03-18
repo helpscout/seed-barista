@@ -38,11 +38,15 @@ Barista.prototype.isValid = function(options) {
     return false;
   }
   // options.file must be a string
-  if (options.file && typeof options.file !== 'string') {
+  if (options.file !== undefined && typeof options.file !== 'string') {
     return false;
   }
   // options.content must be a string
-  if (options.content && typeof options.content !== 'string') {
+  if (options.content !== undefined && typeof options.content !== 'string') {
+    return false;
+  }
+  // options.src must be a string
+  if (options.src !== undefined && typeof options.src !== 'string') {
     return false;
   }
   return true;
@@ -69,7 +73,7 @@ Barista.prototype.render = function(options) {
     }
   }
 
-  if (this.includeSeedPaths) {
+  if (this.options.includeSeedPaths) {
     sassOptions.includePaths = pathfinder([
       this.options.seedIncludePaths, 
       this.options.includePaths,
@@ -80,12 +84,18 @@ Barista.prototype.render = function(options) {
     ]);
   }
 
+  sassOptions.includePaths = sassOptions.includePaths.filter(function(path) {
+    return typeof path === 'string';
+  });
+
   // Render the sass/css with node-sass
   var cssData = sass.renderSync(sassOptions).css.toString();
 
   return {
     css: cssData,
     data: css.parse(cssData),
+    includePaths: sassOptions.includePaths,
+    seed: this.options.seedIncludePaths,
   };
 };
 

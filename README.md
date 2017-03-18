@@ -128,6 +128,8 @@ var output = barista({
 **Type**: `string`
 **Default**: `/test/scss`
 
+Location of (S)CSS test files.
+
 ```js
 var output = barista({
   src: '/my-custom-test-dir/styles',
@@ -191,16 +193,5 @@ Determines the output format of the final CSS style.
 ```js
 var output = barista({
   outputStyle: 'compressed',
-});
-```
-
-
-### src
-**Type**: `string`
-**Default**: `/test/scss`
-
-```js
-var output = barista({
-  src: '/my-custom-test-dir/styles',
 });
 ```
