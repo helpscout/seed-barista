@@ -139,6 +139,16 @@ var output = barista({
 **Type**: `array`
 **Default**: `[]`
 
+```js
+var output = barista({
+  includePaths: [
+    require('seed-button'),
+    require('some-external-css-library'),
+    require('bootstrap-sass'),
+  ],
+});
+```
+
 Paths for Sass dependencies you wish to pass onto [node-sass](https://github.com/sass/node-sass#includepaths).
 
 **Note**: During the node-sass render phase, `includePaths` will be enhanced by [sass-pathfinder](https://github.com/itsjonq/sass-pathfinder). This helps flatten and de-duplicate paths. These enhancements allow you to pass nested arrays into the `includePaths` options.
@@ -147,6 +157,12 @@ Paths for Sass dependencies you wish to pass onto [node-sass](https://github.com
 ### includeSeedPaths
 **Type**: `boolean`
 **Default**: `true`
+
+```js
+var output = barista({
+  includeSeedPaths: false,
+});
+```
 
 Barista was created to help write tests for Seed packs. By default, Barista will automatically include paths defined in a Seed pack's `index.js`. To disable this behaviour, set `includeSeedPaths` to `false`.
 
@@ -165,13 +181,26 @@ var output = barista({
 File that you would like Barista to parse. Barista accepts both `.css` and `.scss` file types.
 
 
-### content
+### outputStyle
 **Type**: `string`
-**Default**: `null`
-**Special**: `file` or `content` must be defined.
+**Default**: `nested`
+**Values**: `nested`, `expanded`, `compact`, `compressed`
+
+Determines the output format of the final CSS style.
 
 ```js
 var output = barista({
-  content: '.maple { padding: 0; }',
+  outputStyle: 'compressed',
+});
+```
+
+
+### src
+**Type**: `string`
+**Default**: `/test/scss`
+
+```js
+var output = barista({
+  src: '/my-custom-test-dir/styles',
 });
 ```
