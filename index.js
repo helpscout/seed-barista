@@ -17,12 +17,15 @@ var testPath = path.join(root, 'scss/pack/', pathBase);
 var Barista = function(options) {
   // Default options
   this.defaults = {
-    includePaths: pathfinder([require(path.join(root, 'index')),testPath,]),
-    src: path.join(root, 'test', 'scss'),
+    includePaths: [],
+    seedIncludePaths: pathfinder([require(path.join(root, 'index')),testPath,]),
+    root: root,
+    src: path.join('test', 'scss'),
     outputStyle: 'nested',
     pack: testPath,
+    includeSeedPaths: true,
     file: null,
-    data: null,
+    content: null,
   };
 };
 
@@ -30,22 +33,22 @@ Barista.prototype.isValid = function(options) {
   if (!options || typeof options !== 'object') {
     return false;
   }
-  if (!options.file && !options.data) {
-    // console.log('seed-barista: "data" or "file" key must be defined in options');
+  if (!options.file && !options.content) {
+    // console.log('seed-barista: "content" or "file" key must be defined in options');
     return false;
   }
   // options.file must be a string
   if (options.file && typeof options.file !== 'string') {
     return false;
   }
-  // options.data must be a string
-  if (options.data && typeof options.data !== 'string') {
+  // options.content must be a string
+  if (options.content && typeof options.content !== 'string') {
     return false;
   }
   return true;
 };
 
-Barista.prototype.order = function(options) {
+Barista.prototype.render = function(options) {
   if (!this.isValid(options)) {
     return false;
   }
@@ -53,18 +56,28 @@ Barista.prototype.order = function(options) {
 
   var sassOptions = {
     includePaths: this.options.includePaths,
-    outputStyle: this.options.outputStyle,
   };
   // Update sassOptions with user defined options
-  if (this.options.data) {
-    sassOptions.data = this.options.data;
+  if (this.options.content) {
+    sassOptions.data = this.options.content;
   }
   else if (this.options.file) {
-    sassOptions.file = path.join(this.options.src, this.options.file);
+    sassOptions.file = path.join(this.options.root, this.options.src, this.options.file);
     if (!fs.existsSync(sassOptions.file)) {
       // File must exist for node-sass to parse
       return false;
     }
+  }
+
+  if (this.includeSeedPaths) {
+    sassOptions.includePaths = pathfinder([
+      this.options.seedIncludePaths, 
+      this.options.includePaths,
+    ]);
+  } else {
+    sassOptions.includePaths = pathfinder([
+      this.options.includePaths,
+    ]);
   }
 
   // Render the sass/css with node-sass
@@ -72,8 +85,10 @@ Barista.prototype.order = function(options) {
 
   return {
     css: cssData,
-    model: css.parse(cssData),
+    data: css.parse(cssData),
   };
 };
 
-module.exports = new Barista();
+var barista = new Barista();
+
+module.exports = barista.render.bind(barista);
