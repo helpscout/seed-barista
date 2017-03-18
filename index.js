@@ -9,8 +9,8 @@ var sass = require('node-sass');
 var path = require('path');
 var pathfinder = require('sass-pathfinder');
 
-var root = findRoot(__dirname);
-var pathBase = path.basename(__dirname);
+var root = findRoot(__dirname).split('/node_modules')[0];
+var pathBase = path.basename(root);
 
 var testPath = path.join(root, 'scss/pack/', pathBase);
 
