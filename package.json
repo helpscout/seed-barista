@@ -1,7 +1,7 @@
 {
   "name": "seed-barista",
   "version": "0.0.1",
-  "description": "Test runner helper for Seed CSS",
+  "description": "Test helper for Seed CSS",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

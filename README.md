@@ -1,6 +1,6 @@
 # seed-barista [![Build Status](https://travis-ci.org/helpscout/seed-barista.svg?branch=master)](https://travis-ci.org/helpscout/seed-barista)
 
-Test runner helper for Seed CSS
+Test helper for Seed CSS
 
 
 **Table of Contents**
