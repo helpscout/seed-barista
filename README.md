@@ -42,7 +42,7 @@ describe('your CSS test', function() {
 Barista returns an `object` after your (S)CSS file (or string) has been parsed:
 
 * output.css: A `string` with the rendered CSS.
-* output.data: An `object` containing a parsed CSS tree (powered by [reworkcss/css](https://github.com/reworkcss/css).
+* output.data: An `object` containing a parsed CSS tree (powered by [reworkcss/css](https://github.com/reworkcss/css)).
 
 ### output.css
 ```js
