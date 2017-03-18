@@ -14,7 +14,7 @@ var pathBase = path.basename(__dirname);
 
 var testPath = path.join(root, 'scss/pack/', pathBase);
 
-var Barista = function(options) {
+var Barista = function() {
   // Default options
   this.defaults = {
     includePaths: [],

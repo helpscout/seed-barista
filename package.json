@@ -4,7 +4,8 @@
   "description": "Test helper for Seed CSS",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "lint": "jshint index.js test/ || true",
+    "test": "npm run lint && mocha"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "jshint": "^2.9.4",
     "mocha": "^3.2.0"
   },
   "dependencies": {
