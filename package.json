@@ -1,0 +1,20 @@
+{
+  "name": "seed-barista",
+  "version": "0.0.1",
+  "description": "Test runner helper for Seed CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "ItsJonQ <itsjonq@gmail.com> (http://jonquach.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "css": "2.2.1",
+    "find-root": "^1.0.0",
+    "node-sass": "^4.5.0",
+    "sass-pathfinder": "0.0.5"
+  }
+}
