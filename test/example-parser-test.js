@@ -2,7 +2,7 @@
 'use strict';
 
 var assert = require('chai').assert;
-var barista = require('../../index');
+var barista = require('../index');
 // Replace above with:
 // var barista = require('seed-barista');
 
