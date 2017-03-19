@@ -43,13 +43,13 @@ describe('barista output', function() {
       assert.equal(expect, true);
     });
 
-    it('should return an parsed CSS tree object', function() {
+    it('should return a PostCSS AST root', function() {
       var styles = '.klass { background: blue };';
       var output = barista({
         content: styles,
       }).data;
 
-      assert.equal(output.type, 'stylesheet');
+      assert.equal(output.type, 'root');
     });
 
     it('should return a CSS tree with a correct selector/property/value structure', function() {
@@ -57,11 +57,11 @@ describe('barista output', function() {
       var output = barista({
         content: styles,
       }).data;
-      var selectorData = output.stylesheet.rules[0];
+      var selectorData = output.nodes[0];
 
-      assert.equal(selectorData.selectors[0], '.klass');
-      assert.equal(selectorData.declarations[0].property, 'background');
-      assert.equal(selectorData.declarations[0].value, 'blue');
+      assert.equal(selectorData.selector, '.klass');
+      assert.equal(selectorData.nodes[0].prop, 'background');
+      assert.equal(selectorData.nodes[0].value, 'blue');
     });
   });
 });
