@@ -42,7 +42,7 @@ describe('your CSS test', function() {
 Barista returns an `object` after your (S)CSS file (or string) has been parsed:
 
 * output.css: A `string` with the rendered CSS.
-* output.data: An `object` containing a parsed CSS tree (powered by [reworkcss/css](https://github.com/reworkcss/css)).
+* output.data: An `object` containing a parsed CSS tree (powered by [PostCSS](https://github.com/postcss/postcss)).
 
 ### output.css
 ```js
@@ -61,65 +61,7 @@ var output = barista({
 });
 ```
 
-`output.data` results:
-```json
-{
-  "type": "stylesheet",
-  "stylesheet": {
-    "rules": [
-      {
-        "type": "rule",
-        "selectors": [
-          "body"
-        ],
-        "declarations": [
-          {
-            "type": "declaration",
-            "property": "background",
-            "value": "#eee",
-            "position": {
-              "start": {
-                "line": 2,
-                "column": 3
-              },
-              "end": {
-                "line": 2,
-                "column": 19
-              }
-            }
-          },
-          {
-            "type": "declaration",
-            "property": "color",
-            "value": "#888",
-            "position": {
-              "start": {
-                "line": 3,
-                "column": 3
-              },
-              "end": {
-                "line": 3,
-                "column": 14
-              }
-            }
-          }
-        ],
-        "position": {
-          "start": {
-            "line": 1,
-            "column": 1
-          },
-          "end": {
-            "line": 4,
-            "column": 2
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
+`output.data` results in a PostCSS AST (abstract syntax tree) node via it's [parse](https://github.com/postcss/postcss/blob/master/lib/postcss.es6#L146) method.
 
 
 ## Options

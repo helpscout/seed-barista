@@ -2,9 +2,9 @@
 'use strict';
 
 var assign = require('lodash.assign');
-var css = require('css');
 var findRoot = require('find-root');
 var fs = require('fs');
+var postcss = require('postcss');
 var sass = require('node-sass');
 var path = require('path');
 var pathfinder = require('sass-pathfinder');
@@ -93,7 +93,7 @@ Barista.prototype.render = function(options) {
 
   return {
     css: cssData,
-    data: css.parse(cssData),
+    data: postcss.parse(cssData),
     includePaths: sassOptions.includePaths,
     seed: this.options.seedIncludePaths,
   };
