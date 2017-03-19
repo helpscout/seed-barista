@@ -9,6 +9,7 @@ Test helper for Seed CSS
 - [Basic Usage](#basic-usage)
 - [Output](#output)
 - [Options](#options)
+- [Parser](#parser)
 
 
 ## Install
@@ -62,6 +63,7 @@ var output = barista({
 ```
 
 `output.data` results in a PostCSS AST (abstract syntax tree) node via it's [parse](https://github.com/postcss/postcss/blob/master/lib/postcss.es6#L146) method.
+
 
 
 ## Options
@@ -136,4 +138,103 @@ Determines the output format of the final CSS style.
 var output = barista({
   outputStyle: 'compressed',
 });
+```
+
+
+## Parser
+
+The (output)[#output] of Barista provides a PostCSS parser that makes it easier to write tests. The parser is initialized using a jQuery style method.
+
+Example:
+
+```js
+var style = `
+  .button {
+    background: red;
+    &:hover {
+      background: blue;
+    }
+  }
+`;
+var output = barista({ content: style });
+var $o = output.$('.button');
+```
+
+`barista.$()` is a handy wrapper that provides a handful of methods that retrieves CSS properties and value from parsing the `postcss.parse` AST node structure.
+
+Example:
+
+```js
+var style = `
+  .button {
+    background: red;
+    &:hover {
+      background: blue;
+    }
+  }
+`;
+var output = barista({ content: style });
+var $o = output.$('.button:hover');
+
+assert.equal($o.getProp('background'), 'blue');
+```
+
+
+### $(selector)
+**Type**: `string`
+
+The selector to search the PostCSS data structure.
+
+```js
+var $o = output.$('.button:hover');
+```
+
+
+### getProp(prop)
+**Type**: `string`
+**Returns**: `string` || `false`
+
+Retrieves the CSS property value of a selector.
+
+```js
+var $o = output.$('.button:hover');
+var prop = $o.getProp('background'); // red
+```
+
+
+### getProps()
+**Returns**: `array`
+
+Returns an array all the CSS properties of a selector.
+
+```js
+var $o = output.$('.button:hover');
+var prop = $o.getProps();
+
+// [{ prop: 'background', value: 'red' }]
+```
+
+
+### getPropData(prop)
+**Type**: `string`
+**Returns**: `object`
+
+Returns the PostCSS declaration object of a CSS property from a selector.
+
+```js
+var $o = output.$('.button:hover');
+var prop = $o.getPropData('background');
+```
+
+
+### hasProp(prop)
+**Type**: `string`
+**Returns**: `boolean`
+
+Checks to see if the selector has a specific CSS property.
+
+```js
+var $o = output.$('.button:hover');
+var prop = $o.hasProp('margin-left');
+// false
 ```
