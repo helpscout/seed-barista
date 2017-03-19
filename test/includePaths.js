@@ -18,7 +18,8 @@ describe('barista { options: includePaths }', function() {
       return path.indexOf('seed-barista') >= 0;
     });
     var expect = customPaths && seedPaths;
-    assert.equal(expect, true);
+
+    assert.isOk(expect);
   });
 
   it('should accept multiple paths in array', function() {
@@ -29,7 +30,8 @@ describe('barista { options: includePaths }', function() {
     var expect = some(output.includePaths, function(path) {
       return path.indexOf('two') >= 0;
     });
-    assert.equal(expect, true);
+
+    assert.isOk(expect);
   });
 
   it('should accept nested arrays of paths', function() {
@@ -40,6 +42,7 @@ describe('barista { options: includePaths }', function() {
     var expect = some(output.includePaths, function(path) {
       return path.indexOf('four') >= 0;
     });
-    assert.equal(expect, true);
+
+    assert.isOk(expect);
   });
 });

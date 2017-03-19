@@ -7,12 +7,14 @@ var barista = require('../index');
 describe('barista', function() {
   it('should return false if no options are passed', function() {
     var output = barista();
-    assert.equal(output, false);
+
+    assert.isNotOk(output);
   });
 
   it('should return false if options are blank', function() {
     var output = barista({});
-    assert.equal(output, false);
+
+    assert.isNotOk(output);
   });
 
   it('should return false if options are not an object', function() {

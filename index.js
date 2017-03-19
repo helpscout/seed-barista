@@ -1,6 +1,8 @@
 // Seed Barista :: Index
 'use strict';
 
+var Parser = require('./lib/parser');
+
 var assign = require('lodash.assign');
 var findRoot = require('find-root');
 var fs = require('fs');
@@ -90,12 +92,16 @@ Barista.prototype.render = function(options) {
 
   // Render the sass/css with node-sass
   var cssData = sass.renderSync(sassOptions).css.toString();
+  var data = postcss.parse(cssData);
+  var parser = new Parser(data);
 
   return {
     css: cssData,
-    data: postcss.parse(cssData),
+    data: data,
     includePaths: sassOptions.includePaths,
     seed: this.options.seedIncludePaths,
+    // Parser Methods
+    $: parser.create.bind(parser),
   };
 };
 

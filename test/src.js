@@ -10,7 +10,8 @@ describe('barista { options: src }', function() {
       file: 'default-src.scss',
       src: true,
     });
-    assert.equal(output, false);
+
+    assert.isNotOk(output);
   });
 
   it('should return false if defined src is 0', function() {
@@ -18,7 +19,8 @@ describe('barista { options: src }', function() {
       file: 'default-src.scss',
       src: 0,
     });
-    assert.equal(output, false);
+
+    assert.isNotOk(output);
   });
 
   it('should render files from /test/scss/ by default', function() {
@@ -26,7 +28,8 @@ describe('barista { options: src }', function() {
       file: 'default-src.scss'
     });
     var expect = output.css.indexOf('.simple') >= 0;
-    assert.equal(expect, true);
+
+    assert(expect);
   });
 
   it('should render files from custom path if defined', function() {
@@ -35,6 +38,7 @@ describe('barista { options: src }', function() {
       src: 'test/custom-path-test/',
     });
     var expect = output.css.indexOf('.simple') >= 0;
-    assert.equal(expect, true);
+
+    assert.isOk(expect);
   });
 });

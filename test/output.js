@@ -13,7 +13,8 @@ describe('barista output', function() {
         content: styles,
       });
       var expect = typeof(output.css) === 'string';
-      assert.equal(expect, true);
+
+      assert.isOk(expect);
     });
 
     it('should return a string from a parsed file', function() {
@@ -21,7 +22,8 @@ describe('barista output', function() {
         file: 'simple-css.scss'
       });
       var expect = typeof(output.css) === 'string';
-      assert.equal(expect, true);
+
+      assert.isOk(expect);
     });
   });
 
@@ -32,7 +34,8 @@ describe('barista output', function() {
         content: styles,
       });
       var expect = typeof(output.data) === 'object';
-      assert.equal(expect, true);
+
+      assert.isOk(expect);
     });
 
     it('should return an object from a parsed file', function() {
@@ -40,7 +43,8 @@ describe('barista output', function() {
         file: 'simple-css.scss'
       });
       var expect = typeof(output.data) === 'object';
-      assert.equal(expect, true);
+
+      assert.isOk(expect);
     });
 
     it('should return a PostCSS AST root', function() {
