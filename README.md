@@ -143,7 +143,7 @@ var output = barista({
 
 ## Parser
 
-The (output)[#output] of Barista provides a PostCSS parser that makes it easier to write tests. The parser is initialized using a jQuery style method.
+The [output](#output) of Barista provides a PostCSS parser that makes it easier to write tests. The parser is initialized using a jQuery style method.
 
 Example:
 
