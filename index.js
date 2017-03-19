@@ -2,27 +2,6 @@
 'use strict';
 
 var Parser = require('./lib/Parser');
-var find = function(data, selector) {
-  return data.filter(function(d) {
-    return d.selector.includes(selector);
-  });
-};
-
-var hasProp = function(node, prop) {
-  var n = node[0];
-  return n.nodes.find(function(p) { return p.prop === prop; }).length;
-};
-
-var getProp = function(node, prop) {
-  var n = node[0];
-  return n.nodes.find(function(p) { return p.prop === prop; }) || false;
-};
-
-var getPropValue = function(node, prop) {
-  var p = getProp(node, prop);
-  if (!p) { return false; }
-  return p.value;
-};
 
 var assign = require('lodash.assign');
 var findRoot = require('find-root');
