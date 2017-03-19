@@ -13,7 +13,8 @@ describe('barista { options: includeSeedPaths }', function() {
     var expect = some(output.includePaths, function(path) {
       return path.indexOf('seed-barista') >= 0;
     });
-    assert.equal(expect, true);
+
+    assert.isOk(expect);
   });
 
   it('should exclude seed-pack paths if set as false', function() {
@@ -24,6 +25,7 @@ describe('barista { options: includeSeedPaths }', function() {
     var expect = some(output.includePaths, function(path) {
       return path.indexOf('seed-barista') >= 0;
     });
-    assert.equal(expect, false);
+
+    assert.isNotOk(expect);
   });
 });

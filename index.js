@@ -101,7 +101,7 @@ Barista.prototype.render = function(options) {
     includePaths: sassOptions.includePaths,
     seed: this.options.seedIncludePaths,
     // Parser Methods
-    $0: parser,
+    $: parser.create.bind(parser),
   };
 };
 
