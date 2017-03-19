@@ -1,6 +1,29 @@
 // Seed Barista :: Index
 'use strict';
 
+var Parser = require('./lib/Parser');
+var find = function(data, selector) {
+  return data.filter(function(d) {
+    return d.selector.includes(selector);
+  });
+};
+
+var hasProp = function(node, prop) {
+  var n = node[0];
+  return n.nodes.find(function(p) { return p.prop === prop; }).length;
+};
+
+var getProp = function(node, prop) {
+  var n = node[0];
+  return n.nodes.find(function(p) { return p.prop === prop; }) || false;
+};
+
+var getPropValue = function(node, prop) {
+  var p = getProp(node, prop);
+  if (!p) { return false; }
+  return p.value;
+};
+
 var assign = require('lodash.assign');
 var findRoot = require('find-root');
 var fs = require('fs');
@@ -90,12 +113,16 @@ Barista.prototype.render = function(options) {
 
   // Render the sass/css with node-sass
   var cssData = sass.renderSync(sassOptions).css.toString();
+  var data = postcss.parse(cssData);
+  var parser = new Parser(data);
 
   return {
     css: cssData,
-    data: postcss.parse(cssData),
+    data: data,
     includePaths: sassOptions.includePaths,
     seed: this.options.seedIncludePaths,
+    // Parser Methods
+    $0: parser,
   };
 };
 
