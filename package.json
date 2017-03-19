@@ -4,8 +4,8 @@
   "description": "Test helper for Seed CSS",
   "main": "index.js",
   "scripts": {
-    "lint": "jshint index.js test/ || true",
-    "test": "npm run lint && mocha"
+    "lint": "jshint index.js test/",
+    "test": "npm run lint && mocha --recursive"
   },
   "repository": {
     "type": "git",
