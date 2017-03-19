@@ -145,6 +145,8 @@ var output = barista({
 
 The [output](#output) of Barista provides a PostCSS parser that makes it easier to write tests. The parser is initialized using a jQuery style method.
 
+Check out this [example test](https://github.com/helpscout/seed-barista/blob/master/test/examples/parser.js) to see how Barista's parser can be used to write tests.
+
 Example:
 
 ```js
