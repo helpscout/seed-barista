@@ -1,7 +1,7 @@
 // Seed Barista :: Index
 'use strict';
 
-var Parser = require('./lib/Parser');
+var Parser = require('./lib/Parser.js');
 
 var assign = require('lodash.assign');
 var findRoot = require('find-root');
