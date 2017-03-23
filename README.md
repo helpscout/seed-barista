@@ -64,17 +64,17 @@ Barista returns an `object` after your (S)CSS file (or string) has been parsed:
 ### output.css
 ```js
 var output = barista({
-  content: '.milk { margin: ceil(5 / 2) * 1px; }',
+  content: '.maple { margin: ceil(5 / 2) * 1px; }',
 });
 
 console.log(output.css);
-// .milk { margin: 3px; }
+// .maple { margin: 3px; }
 ```
 
 ### output.data
 ```js
 var output = barista({
-  content: 'body { background: #eee; color: #888; }',
+  content: '.jay { background: #eee; color: #888; }',
 });
 ```
 
