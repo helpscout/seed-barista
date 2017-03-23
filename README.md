@@ -2,6 +2,8 @@
 
 Test helper for Seed CSS
 
+For added convenience, we recommend trying out [seed-bistro](https://github.com/helpscout/seed-bistro).<br>
+It comes with Barista + other libraries for CSS testing goodness 🙌
 
 **Table of Contents**
 
