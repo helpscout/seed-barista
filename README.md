@@ -31,7 +31,21 @@ describe('your CSS test', function() {
   it('should render a class of wizard + harry', function() {
     var output = barista({ file: '_wizard.scss' });
     var expect = output.css.indexOf('.your-a-wizard.harry {') >= 0;
-    assert.equal(expect, true);
+    assert.isOk(expect);
+  });
+});
+```
+
+**Enhanced** example using Barista's parser:
+```javascript
+var assert = require('chai').assert;
+var barista = require('seed-barista');
+
+describe('your CSS test', function() {
+  it('should render a class of wizard + harry', function() {
+    var output = barista({ file: '_wizard.scss' });
+    var $o = output.$('.your-a-wizard.harry');
+    assert.isOk($o.exists());
   });
 });
 ```
