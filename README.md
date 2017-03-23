@@ -192,6 +192,17 @@ var $o = output.$('.button:hover');
 ```
 
 
+### exists()
+**Returns**: `boolean`
+
+Returns a boolean on whether or not the selector exists in the CSS.
+
+```js
+var $o = output.$('.button:hover');
+console.log($o.exists());
+// true
+```
+
 ### getProp(prop)
 **Type**: `string`
 **Returns**: `string` || `false`
@@ -239,4 +250,17 @@ Checks to see if the selector has a specific CSS property.
 var $o = output.$('.button:hover');
 var prop = $o.hasProp('margin-left');
 // false
+```
+
+
+### media()
+**Returns**: `object` || `false`
+
+Checks to see if the selector has media queries.
+
+```js
+var $o = output.$('.button:hover');
+var mediaQuery = $o.media();
+console.log(mediaQuery.params);
+// (max-width: 600px)
 ```
