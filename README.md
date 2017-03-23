@@ -31,6 +31,7 @@ describe('your CSS test', function() {
   it('should render a class of wizard + harry', function() {
     var output = barista({ file: '_wizard.scss' });
     var expect = output.css.indexOf('.your-a-wizard.harry {') >= 0;
+
     assert.isOk(expect);
   });
 });
@@ -45,6 +46,7 @@ describe('your CSS test', function() {
   it('should render a class of wizard + harry', function() {
     var output = barista({ file: '_wizard.scss' });
     var $o = output.$('.your-a-wizard.harry');
+
     assert.isOk($o.exists());
   });
 });
