@@ -4,6 +4,7 @@
 var Parser = require('./lib/parser');
 
 var assign = require('lodash.assign');
+var harvester = require('seed-harvester');
 var findRoot = require('find-root');
 var fs = require('fs');
 var postcss = require('postcss');
@@ -57,11 +58,10 @@ Barista.prototype.isValid = function(options) {
 };
 
 Barista.prototype.resolveSeedPaths = function() {
-  var index = path.join(root, 'index.js');
   var paths = [];
 
-  if (fs.existsSync(index)) {
-    paths = pathfinder([index, this.options.pack,]);
+  if (!this.options.seedIncludePaths.length) {
+    paths = harvester([this.options.pack,]);
   }
 
   this.options.seedIncludePaths = paths;

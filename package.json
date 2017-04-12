@@ -41,7 +41,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "jshint": "^2.9.4",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "seed-breakpoints": "0.4.0"
   },
   "dependencies": {
     "find-root": "1.0.0",
@@ -52,6 +53,7 @@
     "lodash.some": "4.6.0",
     "node-sass": "^3.10.0",
     "postcss": "5.2.16",
-    "sass-pathfinder": "0.0.5"
+    "sass-pathfinder": "0.0.5",
+    "seed-harvester": "0.1.5"
   }
 }
