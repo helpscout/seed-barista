@@ -11,9 +11,8 @@ describe('barista { options: includeSeedPaths }', function() {
       content: '.pink-hot-is { color: hotpink; }'
     });
     var expect = some(output.includePaths, function(path) {
-      return path.indexOf('seed-barista') >= 0;
+      return path.indexOf('seed-props') >= 0;
     });
-    console.log(output);
 
     assert.isOk(expect);
   });
@@ -24,7 +23,7 @@ describe('barista { options: includeSeedPaths }', function() {
       includeSeedPaths: false
     });
     var expect = some(output.includePaths, function(path) {
-      return path.indexOf('seed-barista') >= 0;
+      return path.indexOf('seed-props') >= 0;
     });
 
     assert.isNotOk(expect);
