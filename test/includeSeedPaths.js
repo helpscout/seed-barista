@@ -13,6 +13,7 @@ describe('barista { options: includeSeedPaths }', function() {
     var expect = some(output.includePaths, function(path) {
       return path.indexOf('seed-barista') >= 0;
     });
+    console.log(output);
 
     assert.isOk(expect);
   });

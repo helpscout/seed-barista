@@ -20,7 +20,7 @@ var Barista = function() {
   // Default options
   this.defaults = {
     includePaths: [],
-    seedIncludePaths: pathfinder([require(path.join(root, 'index')),testPath,]),
+    seedIncludePaths: [],
     root: root,
     src: path.join('test', 'scss'),
     outputStyle: 'nested',
@@ -29,6 +29,8 @@ var Barista = function() {
     file: null,
     content: null,
   };
+
+  return this;
 };
 
 Barista.prototype.isValid = function(options) {
@@ -54,11 +56,24 @@ Barista.prototype.isValid = function(options) {
   return true;
 };
 
+Barista.prototype.resolveSeedPaths = function() {
+  var index = path.join(root, 'index.js');
+  var paths = [];
+
+  if (fs.existsSync(index)) {
+    paths = pathfinder([index, this.options.pack,]);
+  }
+
+  this.options.seedIncludePaths = paths;
+  return this;
+};
+
 Barista.prototype.render = function(options) {
   if (!this.isValid(options)) {
     return false;
   }
   this.options = assign({}, this.defaults, options);
+  this.resolveSeedPaths();
 
   var sassOptions = {
     includePaths: this.options.includePaths,
@@ -66,8 +81,7 @@ Barista.prototype.render = function(options) {
   // Update sassOptions with user defined options
   if (this.options.content) {
     sassOptions.data = this.options.content;
-  }
-  else if (this.options.file) {
+  } else if (this.options.file) {
     sassOptions.file = path.join(this.options.root, this.options.src, this.options.file);
     if (!fs.existsSync(sassOptions.file)) {
       // File must exist for node-sass to parse
@@ -77,7 +91,7 @@ Barista.prototype.render = function(options) {
 
   if (this.options.includeSeedPaths) {
     sassOptions.includePaths = pathfinder([
-      this.options.seedIncludePaths, 
+      this.options.seedIncludePaths,
       this.options.includePaths,
     ]);
   } else {
