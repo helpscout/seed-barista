@@ -3,6 +3,9 @@
 
 var assert = require('chai').assert;
 var barista = require('../index');
+var findRoot = require('find-root');
+var path = require('path');
+var root = findRoot(__dirname).split('/node_modules')[0];
 var some = require('lodash.some');
 
 describe('barista { options: includePaths }', function() {
@@ -11,11 +14,11 @@ describe('barista { options: includePaths }', function() {
       content: '.pink-hot-is { color: hotpink; }',
       includePaths: ['/styles/hello'],
     });
-    var customPaths = some(output.includePaths, function(path) {
-      return path.indexOf('styles/hello') >= 0;
+    var customPaths = some(output.includePaths, function(p) {
+      return p === path.join(root, '/styles/hello');
     });
-    var seedPaths = some(output.includePaths, function(path) {
-      return path.indexOf('seed-barista') >= 0;
+    var seedPaths = some(output.includePaths, function(p) {
+      return p.indexOf('seed-props') >= 0;
     });
     var expect = customPaths && seedPaths;
 

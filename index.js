@@ -63,8 +63,29 @@ Barista.prototype.resolveSeedPaths = function() {
   if (!this.options.seedIncludePaths.length) {
     paths = harvester([this.options.pack,]);
   }
-
   this.options.seedIncludePaths = paths;
+
+  return this;
+};
+
+Barista.prototype.resolveIncludePaths = function() {
+  var paths = [];
+
+  if (this.options.includePaths.length) {
+    paths = pathfinder(this.options.includePaths).reduce(function(list, i) {
+      list.push(path.join(root, i));
+      return list;
+    }, []);
+  }
+  this.options.includePaths = paths;
+
+  return this;
+};
+
+Barista.prototype.resolvePaths = function() {
+  this.resolveSeedPaths();
+  this.resolveIncludePaths();
+
   return this;
 };
 
@@ -73,7 +94,7 @@ Barista.prototype.render = function(options) {
     return false;
   }
   this.options = assign({}, this.defaults, options);
-  this.resolveSeedPaths();
+  this.resolvePaths();
 
   var sassOptions = {
     includePaths: this.options.includePaths,
