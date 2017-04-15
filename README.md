@@ -159,6 +159,21 @@ var output = barista({
 ```
 
 
+### enableCSSOM
+**Type**: `boolean`
+**Default**: `true`
+
+Setting to enable PostCSS parsing that generates the CSS object model (using PostCSS's abstract syntax tree).
+
+```js
+var output = barista({
+  enableCSSOM: false,
+});
+```
+
+Note: Setting it to false will result in `output.data` and `output.$()` returning `false`, since both rely on the CSSOM.
+
+
 ## Parser
 
 The [output](#output) of Barista provides a PostCSS parser that makes it easier to write tests. The parser is initialized using a jQuery style method.

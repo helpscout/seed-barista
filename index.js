@@ -4,22 +4,22 @@
 var Parser = require('./lib/parser');
 
 var assign = require('lodash.assign');
-var harvester = require('seed-harvester');
 var findRoot = require('find-root');
 var fs = require('fs');
-var postcss = require('postcss');
-var sass = require('node-sass');
+var harvester = require('seed-harvester');
 var path = require('path');
 var pathfinder = require('sass-pathfinder');
+var postcss = require('postcss');
+var sass = require('node-sass');
 
 var root = findRoot(__dirname).split('/node_modules')[0];
 var pathBase = path.basename(root);
-
 var testPath = path.join(root, 'scss/pack/', pathBase);
 
 var Barista = function() {
   // Default options
   this.defaults = {
+    enableCSSOM: true,
     includePaths: [],
     seedIncludePaths: [],
     root: root,
@@ -30,6 +30,7 @@ var Barista = function() {
     file: null,
     content: null,
   };
+  this.options = {};
 
   return this;
 };
@@ -89,13 +90,7 @@ Barista.prototype.resolvePaths = function() {
   return this;
 };
 
-Barista.prototype.render = function(options) {
-  if (!this.isValid(options)) {
-    return false;
-  }
-  this.options = assign({}, this.defaults, options);
-  this.resolvePaths();
-
+Barista.prototype.getSassOptions = function() {
   var sassOptions = {
     includePaths: this.options.includePaths,
   };
@@ -125,21 +120,58 @@ Barista.prototype.render = function(options) {
     return typeof path === 'string';
   });
 
+  return sassOptions;
+};
+
+Barista.prototype.getCSSOM = function(cssData) {
+  var output = {
+    data: false,
+    parser: function() {
+      return false;
+    },
+  };
+
+  if (!cssData) {
+    return output;
+  }
+
+  if (this.options.enableCSSOM) {
+    output.data = postcss.parse(cssData);
+    output.parser = function(selector) {
+      return new Parser(output.data).create(selector);
+    };
+  }
+
+  return output;
+};
+
+Barista.prototype.render = function(options) {
+  if (!this.isValid(options)) {
+    return false;
+  }
+  this.options = assign({}, this.defaults, options);
+  this.resolvePaths();
+
+  // Setup node-sass options
+  var sassOptions = this.getSassOptions();
+  if (!sassOptions) {
+    return false;
+  }
   // Render the sass/css with node-sass
   var cssData = sass.renderSync(sassOptions).css.toString();
-  var data = postcss.parse(cssData);
-  var parser = new Parser(data);
+  var CSSOM = this.getCSSOM(cssData);
 
   return {
+    $: CSSOM.parser,
     css: cssData,
-    data: data,
+    data: CSSOM.data,
     includePaths: sassOptions.includePaths,
     seed: this.options.seedIncludePaths,
-    // Parser Methods
-    $: parser.create.bind(parser),
   };
 };
 
-var barista = new Barista();
+var barista = function(options) {
+  return new Barista().render(options);
+};
 
-module.exports = barista.render.bind(barista);
+module.exports = barista;

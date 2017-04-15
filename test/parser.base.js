@@ -63,5 +63,14 @@ describe('barista output.$', function() {
 
       assert.equal($o.selectors.length, 1);
     });
+
+    it('should reset everytime output.$() is used', function() {
+      output.$('.one');
+      output.$('.one');
+      output.$('.one');
+      var $d = output.$('.one.mod');
+
+      assert.equal($d.selectors.length, 1);
+    });
   });
 });
