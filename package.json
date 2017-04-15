@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "jshint index.js test/",
-    "test": "npm run lint && mocha --recursive"
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
