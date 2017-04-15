@@ -65,9 +65,9 @@ describe('barista output.$', function() {
     });
 
     it('should reset everytime output.$() is used', function() {
-      var $a = output.$('.one');
-      var $b = output.$('.one');
-      var $c = output.$('.one');
+      output.$('.one');
+      output.$('.one');
+      output.$('.one');
       var $d = output.$('.one.mod');
 
       assert.equal($d.selectors.length, 1);

@@ -172,6 +172,6 @@ Barista.prototype.render = function(options) {
 
 var barista = function(options) {
   return new Barista().render(options);
-}
+};
 
 module.exports = barista;

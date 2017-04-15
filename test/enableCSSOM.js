@@ -1,4 +1,5 @@
 // Test :: enableCSSOM
+/*jshint expr: true*/
 'use strict';
 
 var barista = require('../index');
