@@ -100,8 +100,6 @@ var output = barista({
 
 
 ### includePaths
-**Type**: `array`
-**Default**: `[]`
 
 | Type | Default | Description |
 | --- | --- | --- |
@@ -123,8 +121,6 @@ Paths for Sass dependencies you wish to pass onto [node-sass](https://github.com
 
 
 ### includeSeedPaths
-**Type**: `boolean`
-**Default**: `true`
 
 | Type | Default | Description |
 | --- | --- | --- |
@@ -174,8 +170,6 @@ var output = barista({
 
 
 ### enableCSSOM
-**Type**: `boolean`
-**Default**: `true`
 
 | Type | Default | Description |
 | --- | --- | --- |
