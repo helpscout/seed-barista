@@ -31,6 +31,15 @@ describe('barista output.$', function() {
       assert.equal(props.prop, 'background');
       assert.equal(props.value, 'blue');
     });
+
+    it('should work with .props() alias', function() {
+      var $o = output.$('.one');
+      var props = $o.props()[0];
+
+      assert.equal(Object.keys(props).length, 2);
+      assert.equal(props.prop, 'background');
+      assert.equal(props.value, 'blue');
+    });
   });
 
   describe('getProp', function() {
@@ -53,6 +62,12 @@ describe('barista output.$', function() {
 
       assert.isNotOk($o.getProp('lolol'));
     });
+
+    it('should work with prop() alias', function() {
+      var $o = output.$('.one');
+
+      assert.isNotOk($o.prop('lolol'));
+    });
   });
 
   describe('getPropData', function() {
@@ -67,6 +82,16 @@ describe('barista output.$', function() {
     it('should return PostCSS ATS declaration object of a prop', function() {
       var $o = output.$('.one');
       var data = $o.getPropData('background');
+
+      assert.isOk(data);
+      assert.equal(data.type, 'decl');
+      assert.equal(data.prop, 'background');
+      assert.equal(data.value, 'blue');
+    });
+
+    it('should work with propData() alias', function() {
+      var $o = output.$('.one');
+      var data = $o.propData('background');
 
       assert.isOk(data);
       assert.equal(data.type, 'decl');

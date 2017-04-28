@@ -87,10 +87,10 @@ var output = barista({
 ## Options
 
 ### src
-**Type**: `string`
-**Default**: `/test/scss`
 
-Location of (S)CSS test files.
+| Type | Default | Description |
+| --- | --- | --- |
+| String | `/test/scss` | Location of (S)CSS test files. |
 
 ```js
 var output = barista({
@@ -100,8 +100,10 @@ var output = barista({
 
 
 ### includePaths
-**Type**: `array`
-**Default**: `[]`
+
+| Type | Default | Description |
+| --- | --- | --- |
+| Array | `[]` | Paths to be passed to Node Sass' `includePaths` option. |
 
 ```js
 var output = barista({
@@ -119,8 +121,10 @@ Paths for Sass dependencies you wish to pass onto [node-sass](https://github.com
 
 
 ### includeSeedPaths
-**Type**: `boolean`
-**Default**: `true`
+
+| Type | Default | Description |
+| --- | --- | --- |
+| Boolean | `true` | Determines if Seed Pack paths should be added to `includePaths`. |
 
 ```js
 var output = barista({
@@ -132,9 +136,12 @@ Barista was created to help write tests for Seed packs. By default, Barista will
 
 
 ### file
-**Type**: `string`
-**Default**: `null`
-**Special**: `file` or `content` must be defined.
+
+| Type | Default | Description |
+| --- | --- | --- |
+| String | `null` | Name of the (S)CSS file to parse. |
+
+**Note**: `file` or `content` must be defined.
 
 ```js
 var output = barista({
@@ -146,8 +153,11 @@ File that you would like Barista to parse. Barista accepts both `.css` and `.scs
 
 
 ### outputStyle
-**Type**: `string`
-**Default**: `nested`
+
+| Type | Default | Description |
+| --- | --- | --- |
+| String | `nested` | Output style of the compiled CSS, provided by Node Sass. |
+
 **Values**: `nested`, `expanded`, `compact`, `compressed`
 
 Determines the output format of the final CSS style.
@@ -160,8 +170,10 @@ var output = barista({
 
 
 ### enableCSSOM
-**Type**: `boolean`
-**Default**: `true`
+
+| Type | Default | Description |
+| --- | --- | --- |
+| Boolean | `true` | Determines of an CSS object model will be included in the output. |
 
 Setting to enable PostCSS parsing that generates the CSS object model (using PostCSS's abstract syntax tree).
 
@@ -239,6 +251,7 @@ console.log($o.exists());
 ### getProp(prop)
 **Type**: `string`
 **Returns**: `string` || `false`
+**Aliases**: `prop()`
 
 Retrieves the CSS property value of a selector.
 
@@ -250,6 +263,7 @@ var prop = $o.getProp('background'); // red
 
 ### getProps()
 **Returns**: `array`
+**Aliases**: `props()`
 
 Returns an array all the CSS properties of a selector.
 
@@ -264,6 +278,7 @@ var prop = $o.getProps();
 ### getPropData(prop)
 **Type**: `string`
 **Returns**: `object`
+**Aliases**: `propData()`
 
 Returns the PostCSS declaration object of a CSS property from a selector.
 
