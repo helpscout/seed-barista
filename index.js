@@ -162,7 +162,8 @@ Barista.prototype.render = function(options) {
   var CSSOM = this.getCSSOM(cssData);
 
   return {
-    $: CSSOM.parser,
+    $: CSSOM.parser, // Deprecate this later
+    rule: CSSOM.parser, // Replaces older $ method
     css: cssData,
     data: CSSOM.data,
     includePaths: sassOptions.includePaths,

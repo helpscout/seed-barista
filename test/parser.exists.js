@@ -4,7 +4,7 @@
 var assert = require('chai').assert;
 var barista = require('../index');
 
-describe('barista output.$', function() {
+describe('barista output.rule', function() {
 
   describe('exists', function() {
     var styles = `
@@ -17,15 +17,15 @@ describe('barista output.$', function() {
     });
 
     it('should return true if class exists', function() {
-      var $o = output.$('.one');
+      var ruleo = output.rule('.one');
 
-      assert.isOk($o.exists());
+      assert.isOk(ruleo.exists());
     });
 
     it('should return false if class doesn\'t exists', function() {
-      var $o = output.$('.two');
+      var ruleo = output.rule('.two');
 
-      assert.isNotOk($o.exists());
+      assert.isNotOk(ruleo.exists());
     });
 
   });

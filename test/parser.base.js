@@ -4,7 +4,7 @@
 var assert = require('chai').assert;
 var barista = require('../index');
 
-describe('barista output.$', function() {
+describe('barista output.rule', function() {
   describe('initialize', function() {
     var styles = `
       .one { background: blue };
@@ -14,17 +14,17 @@ describe('barista output.$', function() {
       content: styles,
     });
 
-    it('should be included in output as "$"', function() {
-      var expect = output.hasOwnProperty('$');
+    it('should be included in output as "rule"', function() {
+      var expect = output.hasOwnProperty('rule');
 
       assert.isOk(expect);
     });
 
-    it('should parse rendered CSS using output.$(\'.clasName\') convention', function() {
-      var $o = output.$('.one');
+    it('should parse rendered CSS using output.rule(\'.clasName\') convention', function() {
+      var ruleo = output.rule('.one');
 
-      assert($o);
-      assert.isOk($o.selectors.length);
+      assert(ruleo);
+      assert.isOk(ruleo.selectors.length);
     });
   });
 
@@ -40,37 +40,37 @@ describe('barista output.$', function() {
     });
 
     it('should have no selectors when no matches are found', function() {
-      var $o = output.$('.nope');
+      var ruleo = output.rule('.nope');
 
-      assert.equal($o.selectors.length, 0);
+      assert.equal(ruleo.selectors.length, 0);
     });
 
     it('should parse with exact matching', function() {
-      var $o = output.$('.one');
+      var ruleo = output.rule('.one');
 
-      assert($o.selectors);
-      assert.equal($o.selectors.length, 1);
+      assert(ruleo.selectors);
+      assert.equal(ruleo.selectors.length, 1);
     });
 
     it('should parse chained classes, e.g ".hello.harry"', function() {
-      var $o = output.$('.two.mod');
+      var ruleo = output.rule('.two.mod');
 
-      assert.equal($o.selectors.length, 1);
+      assert.equal(ruleo.selectors.length, 1);
     });
 
     it('should parse complex classes, e.g ".hello > .harry div a:hover"', function() {
-      var $o = output.$('.three > div ul > li > a:first-child:hover');
+      var ruleo = output.rule('.three > div ul > li > a:first-child:hover');
 
-      assert.equal($o.selectors.length, 1);
+      assert.equal(ruleo.selectors.length, 1);
     });
 
-    it('should reset everytime output.$() is used', function() {
-      output.$('.one');
-      output.$('.one');
-      output.$('.one');
-      var $d = output.$('.one.mod');
+    it('should reset everytime output.rule() is used', function() {
+      output.rule('.one');
+      output.rule('.one');
+      output.rule('.one');
+      var ruled = output.rule('.one.mod');
 
-      assert.equal($d.selectors.length, 1);
+      assert.equal(ruled.selectors.length, 1);
     });
   });
 });

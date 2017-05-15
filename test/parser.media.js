@@ -4,7 +4,7 @@
 var assert = require('chai').assert;
 var barista = require('../index');
 
-describe('barista output.$', function() {
+describe('barista output.rule', function() {
 
   describe('media queries', function() {
     var styles = `
@@ -36,30 +36,30 @@ describe('barista output.$', function() {
     });
 
     it('should find class within media query', function() {
-      var $o = output.$('.one--sm');
+      var ruleo = output.rule('.one--sm');
 
-      assert.isOk($o.selectors.length);
-      assert.equal($o.getProp('background'), 'red');
+      assert.isOk(ruleo.selectors.length);
+      assert.equal(ruleo.getProp('background'), 'red');
     });
 
     it('should find class within media print query', function() {
-      var $o = output.$('.one--print');
+      var ruleo = output.rule('.one--print');
 
-      assert.isOk($o.selectors.length);
-      assert.equal($o.getProp('background'), 'yellow');
+      assert.isOk(ruleo.selectors.length);
+      assert.equal(ruleo.getProp('background'), 'yellow');
     });
 
-    it('should get media query details with $.media() method', function() {
-      var $o = output.$('.one--sm');
-      var media = $o.media();
+    it('should get media query details with rule.media() method', function() {
+      var ruleo = output.rule('.one--sm');
+      var media = ruleo.media();
 
       assert.isOk(media);
       assert.isOk(media.params.indexOf('max-width') >= 0);
     });
 
-    it('should return false with $.media() selector has no media queries', function() {
-      var $o = output.$('.zero');
-      var media = $o.media();
+    it('should return false with rule.media() selector has no media queries', function() {
+      var ruleo = output.rule('.zero');
+      var media = ruleo.media();
 
       assert.isNotOk(media);
     });
