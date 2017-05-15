@@ -312,3 +312,9 @@ var mediaQuery = rule.media();
 console.log(mediaQuery.params);
 // (max-width: 600px)
 ```
+
+
+
+## Deprecations
+
+* The `output.$` method has been renamed to `output.rule`. Please use `.rule()` instead!
