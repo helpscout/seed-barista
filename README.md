@@ -47,9 +47,9 @@ var barista = require('seed-barista');
 describe('your CSS test', function() {
   it('should render a class of wizard + harry', function() {
     var output = barista({ file: '_wizard.scss' });
-    var $o = output.$('.your-a-wizard.harry');
+    var rule = output.rule('.your-a-wizard.harry');
 
-    assert.isOk($o.exists());
+    assert.isOk(rule.exists());
   });
 });
 ```
@@ -183,12 +183,12 @@ var output = barista({
 });
 ```
 
-Note: Setting it to false will result in `output.data` and `output.$()` returning `false`, since both rely on the CSSOM.
+Note: Setting it to false will result in `output.data` and `output.rule()` returning `false`, since both rely on the CSSOM.
 
 
 ## Parser
 
-The [output](#output) of Barista provides a PostCSS parser that makes it easier to write tests. The parser is initialized using a jQuery style method.
+The [output](#output) of Barista provides a PostCSS parser that makes it easier to write tests.
 
 Check out this [example test](https://github.com/helpscout/seed-barista/blob/master/test/examples/parser.js) to see how Barista's parser can be used to write tests.
 
@@ -204,10 +204,10 @@ var style = `
   }
 `;
 var output = barista({ content: style });
-var $o = output.$('.button');
+var rule = output.rule('.button');
 ```
 
-`barista.$()` is a handy wrapper that provides a handful of methods that retrieves CSS properties and value from parsing the `postcss.parse` AST node structure.
+`barista.rule()` is a handy wrapper that provides a handful of methods that retrieves CSS properties and value from parsing the `postcss.parse` AST node structure.
 
 Example:
 
@@ -221,19 +221,19 @@ var style = `
   }
 `;
 var output = barista({ content: style });
-var $o = output.$('.button:hover');
+var rule = output.rule('.button:hover');
 
-assert.equal($o.getProp('background'), 'blue');
+assert.equal(rule.prop('background'), 'blue');
 ```
 
 
-### $(selector)
+### rule(selector)
 **Type**: `string`
 
 The selector to search the PostCSS data structure.
 
 ```js
-var $o = output.$('.button:hover');
+var rule = output.rule('.button:hover');
 ```
 
 
@@ -243,48 +243,48 @@ var $o = output.$('.button:hover');
 Returns a boolean on whether or not the selector exists in the CSS.
 
 ```js
-var $o = output.$('.button:hover');
-console.log($o.exists());
+var rule = output.rule('.button:hover');
+console.log(rule.exists());
 // true
 ```
 
-### getProp(prop)
+### prop(prop)
 **Type**: `string`
 **Returns**: `string` || `false`
-**Aliases**: `prop()`
+**Aliases**: `getProp()`
 
 Retrieves the CSS property value of a selector.
 
 ```js
-var $o = output.$('.button:hover');
-var prop = $o.getProp('background'); // red
+var rule = output.rule('.button:hover');
+var prop = rule.prop('background'); // red
 ```
 
 
-### getProps()
+### props()
 **Returns**: `array`
-**Aliases**: `props()`
+**Aliases**: `getProps()`
 
 Returns an array all the CSS properties of a selector.
 
 ```js
-var $o = output.$('.button:hover');
-var prop = $o.getProps();
+var rule = output.rule('.button:hover');
+var prop = rule.props();
 
 // [{ prop: 'background', value: 'red' }]
 ```
 
 
-### getPropData(prop)
+### propData(prop)
 **Type**: `string`
 **Returns**: `object`
-**Aliases**: `propData()`
+**Aliases**: `getPropData()`
 
 Returns the PostCSS declaration object of a CSS property from a selector.
 
 ```js
-var $o = output.$('.button:hover');
-var prop = $o.getPropData('background');
+var rule = output.rule('.button:hover');
+var prop = rule.propData('background');
 ```
 
 
@@ -295,8 +295,8 @@ var prop = $o.getPropData('background');
 Checks to see if the selector has a specific CSS property.
 
 ```js
-var $o = output.$('.button:hover');
-var prop = $o.hasProp('margin-left');
+var rule = output.rule('.button:hover');
+var prop = rule.hasProp('margin-left');
 // false
 ```
 
@@ -307,8 +307,8 @@ var prop = $o.hasProp('margin-left');
 Checks to see if the selector has media queries.
 
 ```js
-var $o = output.$('.button:hover');
-var mediaQuery = $o.media();
+var rule = output.rule('.button:hover');
+var mediaQuery = rule.media();
 console.log(mediaQuery.params);
 // (max-width: 600px)
 ```
