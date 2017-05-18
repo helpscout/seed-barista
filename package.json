@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "find-root": "1.0.0",
+    "genki": "0.0.5",
     "lodash.assign": "4.2.0",
     "lodash.find": "4.6.0",
     "lodash.flatten": "4.4.0",

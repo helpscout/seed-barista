@@ -1,16 +1,17 @@
 // Seed Barista :: Index
 'use strict';
 
-var Parser = require('./lib/parser');
-
 var assign = require('lodash.assign');
 var findRoot = require('find-root');
 var fs = require('fs');
+var genki = require('genki');
 var harvester = require('seed-harvester');
 var path = require('path');
 var pathfinder = require('sass-pathfinder');
 var postcss = require('postcss');
 var sass = require('node-sass');
+var Parser = require('./lib/parser');
+var renderer = require('./lib/renderer');
 
 var root = findRoot(__dirname).split('/node_modules')[0];
 var pathBase = path.basename(root);
@@ -160,14 +161,27 @@ Barista.prototype.render = function(options) {
   // Render the sass/css with node-sass
   var cssData = sass.renderSync(sassOptions).css.toString();
   var CSSOM = this.getCSSOM(cssData);
+  var DOM = genki.start({
+    content: cssData,
+  });
+
+  var find = function(selectors) {
+    DOM.document.body.innerHTML = '';
+    DOM.document.body.appendChild(renderer(DOM.document, selectors));
+    return DOM.$(selectors);
+  };
 
   return {
     $: CSSOM.parser, // Deprecate this later
-    rule: CSSOM.parser, // Replaces older $ method
+    DOM: DOM,
     css: cssData,
     data: CSSOM.data,
+    document: DOM.document,
+    find: find,
     includePaths: sassOptions.includePaths,
+    rule: CSSOM.parser, // Replaces older $ method
     seed: this.options.seedIncludePaths,
+    window: DOM.window,
   };
 };
 
