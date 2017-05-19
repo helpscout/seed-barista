@@ -54,6 +54,50 @@ describe('barista output.mount', function() {
     });
   });
 
+  describe('.html()', function() {
+    var styles = `
+      .one { background: blue };
+    `;
+    var output = barista({
+      content: styles,
+    }).mount();
+
+    it('should only be able to append after mounting', function() {
+      var styles = `
+        .one { background: blue };
+      `;
+      var output = barista({
+        content: styles,
+      });
+
+      this.cw = sinon.stub(console, 'warn');
+      expect(output.html('<div class="something">Hello</div>')).to.be.false;
+      this.cw.restore();
+    });
+
+    it('should add HTML markup', function() {
+      output.html(`
+        <h1>Hello</h1>
+        <ul class="ex-id">
+          <li class="sing-song">SG</li>
+          <li class="oppa">HN</li>
+          <li class="cat">LE</li>
+          <li class="potato">HL</li>
+          <li class="trash">JW</li>
+        </ul>
+      `);
+
+      expect(output.dom.$('h1').length).to.equal(1);
+      expect(output.dom.$('ul').length).to.equal(1);
+      expect(output.dom.$('li').length).to.equal(5);
+      expect(output.dom.$('.sing-song').length).to.equal(1);
+      expect(output.dom.$('.oppa').length).to.equal(1);
+      expect(output.dom.$('.cat').length).to.equal(1);
+      expect(output.dom.$('.potato').length).to.equal(1);
+      expect(output.dom.$('.trash').length).to.equal(1);
+    });
+  });
+
   describe('.render()', function() {
     var styles = `
       .one { background: blue };
