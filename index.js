@@ -4,7 +4,6 @@
 var assign = require('lodash.assign');
 var findRoot = require('find-root');
 var fs = require('fs');
-var genki = require('genki');
 var harvester = require('seed-harvester');
 var path = require('path');
 var pathfinder = require('sass-pathfinder');
