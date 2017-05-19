@@ -54,6 +54,42 @@ describe('barista output.mount', function() {
     });
   });
 
+  describe('.appendHTML()', function() {
+    var styles = `
+      .one { background: blue };
+    `;
+    var output = barista({
+      content: styles,
+    }).mount();
+
+    it('should only be able to appendHTML after mounting', function() {
+      var styles = `
+        .one { background: blue };
+      `;
+      var output = barista({
+        content: styles,
+      });
+
+      this.cw = sinon.stub(console, 'warn');
+      expect(output.appendHTML('<div>Hello</div>')).to.be.false;
+      this.cw.restore();
+    });
+
+    it('should append markup to DOM', function() {
+      output.appendHTML(`
+        <div class="one">One</div>
+      `);
+      expect(output.dom.$('.one').length).to.equal(1);
+
+      output.appendHTML(`
+        <div class="one two">Two</div>
+      `);
+      expect(output.dom.$('.one').length).to.equal(2);
+      expect(output.dom.$('.two').length).to.equal(1);
+    });
+  });
+
+
   describe('.html()', function() {
     var styles = `
       .one { background: blue };
