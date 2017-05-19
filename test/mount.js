@@ -120,7 +120,7 @@ describe('barista output.mount', function() {
     });
 
     it('should return a jQuery instance', function() {
-      expect(output.find('.one').__proto__.jquery).to.exist;
+      expect(Object.getPrototypeOf(output.find('.one')).jquery).to.exist;
     });
 
     it('should generate DOM elements and have access to jQuery\'s .css()', function() {
