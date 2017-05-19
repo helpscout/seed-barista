@@ -23,6 +23,7 @@ describe('barista output.find', function() {
 
   it('should generate complex selector rules', function() {
     var selector = '#omg ul li a button i.icon.icon-thing';
+    output.find(selector);
     var $icon = output.DOM.$(selector);
 
     expect($icon.length).to.equal(1);
