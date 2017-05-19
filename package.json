@@ -42,7 +42,8 @@
     "chai": "^3.5.0",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
-    "seed-breakpoints": "0.4.0"
+    "seed-breakpoints": "0.4.0",
+    "sinon": "2.2.0"
   },
   "dependencies": {
     "find-root": "1.0.0",
