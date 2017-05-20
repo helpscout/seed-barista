@@ -22,7 +22,10 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 `BaristaOutput`: The initial `output` instance.
 
 
-#### Examples
+---
+
+
+### Examples
 
 `.render()` provides a quick way to add virtual DOM elements. To test it the element's styles, you'll need to use the jQuery's handy `.css()` method.
 
@@ -68,6 +71,9 @@ Barista's virtual DOM is now:
   <span class="sweet-jumps"></div>
 </div>
 ```
+
+
+---
 
 
 #### Related

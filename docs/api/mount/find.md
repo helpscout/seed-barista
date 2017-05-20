@@ -22,7 +22,10 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 `jQuery`: A JSDOM-based jQuery instance of the specified selector(s).
 
 
-#### Example
+---
+
+
+### Example
 
 `.find()` provides a quick way to add and find a jQuery instance of a virtual DOM element. This allows you to use the jQuery's handy `.css()` method to test for CSS rules.
 
