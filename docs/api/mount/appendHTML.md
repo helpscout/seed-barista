@@ -3,7 +3,7 @@
 Append DOM elements to Barista's virtual DOM by specifying HTML markup.
 
 
-#### .append(markup)
+#### .appendHTML(markup)
 
 | Argument | Type | Description |
 | --- | --- | --- |
