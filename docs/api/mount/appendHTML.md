@@ -41,4 +41,4 @@ The above example will generate this markup, to be injected into the `body` of B
 
 #### Related
 
-For a simpler method to append elements, check out [`.append()`](/append.md).
+For a simpler method to append elements, check out [`.append()`](append.md).
