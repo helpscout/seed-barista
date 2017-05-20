@@ -9,9 +9,9 @@
 
 #### Returns
 
-| Return | Type | Description |
-| --- | --- | --- |
-| prop | string | The CSS property retrieved. |
+| Type | Description |
+| --- | --- |
+| string | The CSS property retrieved. `false` is property doesn't exist. |
 
 
 #### Aliases
