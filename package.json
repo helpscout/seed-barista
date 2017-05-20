@@ -4,8 +4,8 @@
   "description": "Test helper for Seed CSS",
   "main": "index.js",
   "scripts": {
-    "lint": "jshint index.js test/",
-    "test": "npm run lint && mocha --recursive"
+    "lint": "jshint index.js lib/",
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
@@ -42,10 +42,12 @@
     "chai": "^3.5.0",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
-    "seed-breakpoints": "0.4.0"
+    "seed-breakpoints": "0.4.0",
+    "sinon": "2.2.0"
   },
   "dependencies": {
     "find-root": "1.0.0",
+    "genki": "0.0.5",
     "lodash.assign": "4.2.0",
     "lodash.find": "4.6.0",
     "lodash.flatten": "4.4.0",
