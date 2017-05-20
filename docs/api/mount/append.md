@@ -36,7 +36,7 @@ var span = output.dom.$('div.kip span.cage-fighter');
 // Testing the selector's CSS
 expect(span.css('color')).to.equal('red');
 expect(span.css('display')).to.equal('inline-block');
-expect(span.css('display')).to.equal('inline-block');
+expect(span.css('position')).to.equal('relative');
 ```
 
 

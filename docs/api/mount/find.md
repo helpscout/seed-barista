@@ -33,7 +33,7 @@ var span = output.find('div.kip span.cage-fighter');
 
 expect(span.css('color')).to.equal('red');
 expect(span.css('display')).to.equal('inline-block');
-expect(span.css('display')).to.equal('inline-block');
+expect(span.css('position')).to.equal('relative');
 ```
 
 
