@@ -24,7 +24,7 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 
 ```js
 var output = barista({ ... }).mount();
-output.append('div.kip span.cage-fighter');
+output.render('div.kip span.cage-fighter');
 ```
 
 The above example will generate this markup, to be injected into the `body` of Barista's virtual DOM:
@@ -37,7 +37,7 @@ The above example will generate this markup, to be injected into the `body` of B
 Note: If you use this method again, it will remove your previous DOM elements.
 
 ```js
-output.append('div.napolean span.sweet-jumps');
+output.render('div.napolean span.sweet-jumps');
 ```
 
 Barista's virtual DOM is now:
