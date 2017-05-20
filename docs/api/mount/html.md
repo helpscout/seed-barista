@@ -1,6 +1,8 @@
 # .html()
 
-Generate DOM elements to Barista's virtual DOM by specifying HTML markup. All previous elements are removed ebfore the newly generated elements are added.
+Generate DOM elements to Barista's virtual DOM by specifying HTML markup.
+
+All previous elements are removed ebfore the newly generated elements are added.
 
 
 #### .html(markup)
