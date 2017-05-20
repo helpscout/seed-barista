@@ -37,4 +37,4 @@ The above example will generate this markup, to be injected into the `body` of B
 
 #### Related
 
-For an advanced method to append elements, check out [`.appendHTML()`](/appendHTML.md).
+For an advanced method to append elements, check out [`.appendHTML()`](appendHTML.md).
