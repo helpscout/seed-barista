@@ -16,7 +16,7 @@
 #### Examples
 
 ```js
-var output = barista({ ... });
+var output = barista({ ... }).mount();
 output.append('div.kip span.cage-fighter');
 ```
 
