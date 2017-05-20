@@ -22,6 +22,25 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 
 #### Examples
 
+`.append()` provides a quick way to add virtual DOM elements. To test it the element's styles, you'll need to use the jQuery's handy `.css()` method.
+
+```js
+var output = barista({ ... }).mount();
+
+// Adding the element(s)
+output.append('div.kip span.cage-fighter');
+// Getting the selector
+var span = output.dom.$('div.kip span.cage-fighter');
+
+// Testing the selector's CSS
+expect(span.css('color')).to.equal('red');
+expect(span.css('display')).to.equal('inline-block');
+expect(span.css('display')).to.equal('inline-block');
+```
+
+
+#### Details
+
 ```js
 var output = barista({ ... }).mount();
 output.append('div.kip span.cage-fighter');
