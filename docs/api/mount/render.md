@@ -1,6 +1,8 @@
 # .render()
 
-Generate DOM elements to Barista's virtual DOM by specifying selectors. All previous elements are removed ebfore the newly generated elements are added.
+Generate DOM elements to Barista's virtual DOM by specifying selectors.
+
+All previous elements are removed ebfore the newly generated elements are added.
 
 
 #### .render(selectors)
