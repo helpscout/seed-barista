@@ -22,10 +22,8 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 `BaristaOutput`: The initial `output` instance.
 
 
----
 
-
-### Examples
+## Examples
 
 `.render()` provides a quick way to add virtual DOM elements. To test it the element's styles, you'll need to use the jQuery's handy `.css()` method.
 
@@ -44,7 +42,8 @@ expect(span.css('display')).to.equal('inline-block');
 ```
 
 
-#### Details
+
+## Details
 
 ```js
 var output = barista({ ... }).mount();
@@ -73,9 +72,7 @@ Barista's virtual DOM is now:
 ```
 
 
----
 
-
-#### Related
+## Related
 
 For an advanced method to generate elements, check out [`.html()`](html.md).

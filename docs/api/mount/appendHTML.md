@@ -20,10 +20,8 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 `BaristaOutput`: The initial `output` instance.
 
 
----
 
-
-### Examples
+## Examples
 
 `.appendHTML()` provides a quick way to add virtual DOM elements. To test it the element's styles, you'll need to use the jQuery's handy `.css()` method.
 
@@ -46,7 +44,8 @@ expect(span.css('display')).to.equal('inline-block');
 ```
 
 
-#### Details
+
+## Details
 
 ```js
 var output = barista({ ... }).mount();
@@ -65,9 +64,7 @@ The above example will generate this markup, to be injected into the `body` of B
 ```
 
 
----
 
-
-#### Related
+## Related
 
 For a simpler method to append elements, check out [`.append()`](append.md).
