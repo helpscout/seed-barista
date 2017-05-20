@@ -3,11 +3,11 @@
 Append DOM elements to Barista's virtual DOM by specifying selectors.
 
 
-#### .append(selector)
+#### .append(selectors)
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| selector | string | Selectors to generate and append into Barista's virtual DOM |
+| selectors | string | Selectors to generate and append into Barista's virtual DOM |
 
 
 #### Requirements
