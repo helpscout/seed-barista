@@ -22,9 +22,6 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 `BaristaOutput`: The initial `output` instance.
 
 
----
-
-
 
 ## Examples
 
