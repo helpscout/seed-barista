@@ -24,7 +24,7 @@
 
 
 ```js
-var output = barista({ ... }).mount();
+var output = barista({ ... });
 var rule = output.rule('.vote-pedro');
 
 expect(rule.prop('position')).to.equal('absolute');
