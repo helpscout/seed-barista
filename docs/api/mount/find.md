@@ -55,8 +55,3 @@ Note: If you use this method again, it will remove your previous DOM elements.
 ```js
 var ul = output.find('ul.napolean.skills li');
 ```
-
-
-#### Related
-
-For a simpler method to generate elements, check out [`.render()`](render.md).
