@@ -9,9 +9,8 @@ It comes with Barista + other libraries for CSS testing goodness 🙌
 
 - [Install](#install)
 - [Basic Usage](#basic-usage)
-- [Output](#output)
-- [Options](#options)
-- [Parser](#parser)
+- [Documentation](#documentation)
+- [Examples](#examples)
 
 
 ## Install
@@ -26,295 +25,26 @@ npm install seed-barista --save-dev
 Below is an example of how you can setup a [Mocha](https://mochajs.org/) test with Barista. A fast and simple way to test `.scss` output is to verify the rendered output matches against expected strings.
 
 ```javascript
-var assert = require('chai').assert;
+var expect = require('chai').expect;
 var barista = require('seed-barista');
 
-describe('your CSS test', function() {
-  it('should render a class of wizard + harry', function() {
-    var output = barista({ file: '_wizard.scss' });
-    var expect = output.css.indexOf('.your-a-wizard.harry {') >= 0;
-
-    assert.isOk(expect);
-  });
-});
-```
-
-**Enhanced** example using Barista's parser:
-```javascript
-var assert = require('chai').assert;
-var barista = require('seed-barista');
-
-describe('your CSS test', function() {
+describe('harry component styles', function() {
   it('should render a class of wizard + harry', function() {
     var output = barista({ file: '_wizard.scss' });
     var rule = output.rule('.your-a-wizard.harry');
 
-    assert.isOk(rule.exists());
+    expect(rule.exists()).to.be.true;
+    expect(rule.prop('background')).to.equal('red');
+    expect(rule.prop('color')).to.equal('yellow');
   });
 });
 ```
 
 
 
-## Output
+## Documentation
 
-Barista returns an `object` after your (S)CSS file (or string) has been parsed:
 
-* output.css: A `string` with the rendered CSS.
-* output.data: An `object` containing a parsed CSS tree (powered by [PostCSS](https://github.com/postcss/postcss)).
 
-### output.css
-```js
-var output = barista({
-  content: '.maple { margin: ceil(5 / 2) * 1px; }',
-});
 
-console.log(output.css);
-// .maple { margin: 3px; }
-```
-
-### output.data
-```js
-var output = barista({
-  content: '.jay { background: #eee; color: #888; }',
-});
-```
-
-`output.data` results in a PostCSS AST (abstract syntax tree) node via it's [parse](https://github.com/postcss/postcss/blob/master/lib/postcss.es6#L146) method.
-
-
-
-## Options
-
-### src
-
-| Type | Default | Description |
-| --- | --- | --- |
-| String | `/test/scss` | Location of (S)CSS test files. |
-
-```js
-var output = barista({
-  src: '/my-custom-test-dir/styles',
-});
-```
-
-
-### includePaths
-
-| Type | Default | Description |
-| --- | --- | --- |
-| Array | `[]` | Paths to be passed to Node Sass' `includePaths` option. |
-
-```js
-var output = barista({
-  includePaths: [
-    require('seed-button'),
-    require('some-external-css-library'),
-    require('bootstrap-sass'),
-  ],
-});
-```
-
-Paths for Sass dependencies you wish to pass onto [node-sass](https://github.com/sass/node-sass#includepaths).
-
-**Note**: During the node-sass render phase, `includePaths` will be enhanced by [sass-pathfinder](https://github.com/itsjonq/sass-pathfinder). This helps flatten and de-duplicate paths. These enhancements allow you to pass nested arrays into the `includePaths` options.
-
-
-### includeSeedPaths
-
-| Type | Default | Description |
-| --- | --- | --- |
-| Boolean | `true` | Determines if Seed Pack paths should be added to `includePaths`. |
-
-```js
-var output = barista({
-  includeSeedPaths: false,
-});
-```
-
-Barista was created to help write tests for Seed packs. By default, Barista will automatically include paths defined in a Seed pack's `index.js`. To disable this behaviour, set `includeSeedPaths` to `false`.
-
-
-### file
-
-| Type | Default | Description |
-| --- | --- | --- |
-| String | `null` | Name of the (S)CSS file to parse. |
-
-**Note**: `file` or `content` must be defined.
-
-```js
-var output = barista({
-  file: 'my-test-css-file.scss',
-});
-```
-
-File that you would like Barista to parse. Barista accepts both `.css` and `.scss` file types.
-
-
-### outputStyle
-
-| Type | Default | Description |
-| --- | --- | --- |
-| String | `nested` | Output style of the compiled CSS, provided by Node Sass. |
-
-**Values**: `nested`, `expanded`, `compact`, `compressed`
-
-Determines the output format of the final CSS style.
-
-```js
-var output = barista({
-  outputStyle: 'compressed',
-});
-```
-
-
-### enableCSSOM
-
-| Type | Default | Description |
-| --- | --- | --- |
-| Boolean | `true` | Determines of an CSS object model will be included in the output. |
-
-Setting to enable PostCSS parsing that generates the CSS object model (using PostCSS's abstract syntax tree).
-
-```js
-var output = barista({
-  enableCSSOM: false,
-});
-```
-
-Note: Setting it to false will result in `output.data` and `output.rule()` returning `false`, since both rely on the CSSOM.
-
-
-## Parser
-
-The [output](#output) of Barista provides a PostCSS parser that makes it easier to write tests.
-
-Check out this [example test](https://github.com/helpscout/seed-barista/blob/master/test/examples/parser.js) to see how Barista's parser can be used to write tests.
-
-Example:
-
-```js
-var style = `
-  .button {
-    background: red;
-    &:hover {
-      background: blue;
-    }
-  }
-`;
-var output = barista({ content: style });
-var rule = output.rule('.button');
-```
-
-`barista.rule()` is a handy wrapper that provides a handful of methods that retrieves CSS properties and value from parsing the `postcss.parse` AST node structure.
-
-Example:
-
-```js
-var style = `
-  .button {
-    background: red;
-    &:hover {
-      background: blue;
-    }
-  }
-`;
-var output = barista({ content: style });
-var rule = output.rule('.button:hover');
-
-assert.equal(rule.prop('background'), 'blue');
-```
-
-
-### rule(selector)
-**Type**: `string`
-
-The selector to search the PostCSS data structure.
-
-```js
-var rule = output.rule('.button:hover');
-```
-
-
-### exists()
-**Returns**: `boolean`
-
-Returns a boolean on whether or not the selector exists in the CSS.
-
-```js
-var rule = output.rule('.button:hover');
-console.log(rule.exists());
-// true
-```
-
-### prop(prop)
-**Type**: `string`
-**Returns**: `string` || `false`
-**Aliases**: `getProp()`
-
-Retrieves the CSS property value of a selector.
-
-```js
-var rule = output.rule('.button:hover');
-var prop = rule.prop('background'); // red
-```
-
-
-### props()
-**Returns**: `array`
-**Aliases**: `getProps()`
-
-Returns an array all the CSS properties of a selector.
-
-```js
-var rule = output.rule('.button:hover');
-var prop = rule.props();
-
-// [{ prop: 'background', value: 'red' }]
-```
-
-
-### propData(prop)
-**Type**: `string`
-**Returns**: `object`
-**Aliases**: `getPropData()`
-
-Returns the PostCSS declaration object of a CSS property from a selector.
-
-```js
-var rule = output.rule('.button:hover');
-var prop = rule.propData('background');
-```
-
-
-### hasProp(prop)
-**Type**: `string`
-**Returns**: `boolean`
-
-Checks to see if the selector has a specific CSS property.
-
-```js
-var rule = output.rule('.button:hover');
-var prop = rule.hasProp('margin-left');
-// false
-```
-
-
-### media()
-**Returns**: `object` || `false`
-
-Checks to see if the selector has media queries.
-
-```js
-var rule = output.rule('.button:hover');
-var mediaQuery = rule.media();
-console.log(mediaQuery.params);
-// (max-width: 600px)
-```
-
-
-
-## Deprecations
-
-* The `output.$` method has been renamed to `output.rule`. Please use `.rule()` instead!
+## Examples

@@ -1,12 +1,12 @@
-// Test :: Examples :: Parser
+// Test :: Examples :: Button
 'use strict';
 
-var assert = require('chai').assert;
+var expect = require('chai').expect;
 var barista = require('../../index');
 // Replace above with:
 // var barista = require('seed-barista');
 
-describe('example: test', function() {
+describe('example: test: button', function() {
   var styles = `
     .btn {
       background: blue;
@@ -31,20 +31,21 @@ describe('example: test', function() {
   });
 
   it('should have an active state + style', function() {
-    var $o = output.$('.btn:active');
+    var rule = output.rule('.btn:active');
 
-    assert.equal($o.getProp('background'), 'purple');
+    expect(rule.prop('background')).to.equal('purple');
   });
 
   it('should have a focus state + style', function() {
-    var $o = output.$('.btn:focus');
+    var rule = output.rule('.btn:focus');
 
-    assert.equal($o.getProp('border-color'), 'red');
+    expect(rule.prop('border-color')).to.equal('red');
   });
 
   it('should have a focus:active state + style', function() {
-    var $o = output.$('.btn:focus:active');
+    var rule = output.rule('.btn:focus:active');
 
-    assert.equal($o.getProp('border-color'), 'purple');
+    expect(rule.exists()).to.be.true;
+    expect(rule.prop('border-color')).to.equal('purple');
   });
 });
