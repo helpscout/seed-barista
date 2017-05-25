@@ -19,8 +19,7 @@ describe('harry component styles', function() {
 });
 ```
 
-
-* ** barista(options).mount()
+#### barista(options).mount()
 
 | Argument | Type | Description |
 | --- | --- | --- |
