@@ -6,7 +6,7 @@ File that you would like Barista to parse. Barista accepts both `.css` and `.scs
 | --- | --- | --- |
 | String | `null` | Name of the (S)CSS file to parse. |
 
-**Note**: `file` or `content` must be defined.
+**Note**: The option of `file` or `content` must be defined.
 
 
 
