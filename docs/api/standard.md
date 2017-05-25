@@ -19,7 +19,7 @@ describe('harry component styles', function() {
 ```
 
 
-* ** barista(options)
+#### barista(options)
 
 | Argument | Type | Description |
 | --- | --- | --- |
