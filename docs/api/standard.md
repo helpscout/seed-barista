@@ -31,7 +31,7 @@ describe('harry component styles', function() {
 
 ## Standard API
 
-* ####[`.exists()`](rule/exist.md)
-* ####[`.hasProp()`](rule/hasProp.md)
-* ####[`.prop()`](rule/prop.md)
-* ####[`.props()`](rule/props.md)
+####[`.exists()`](rule/exist.md)
+####[`.hasProp()`](rule/hasProp.md)
+####[`.prop()`](rule/prop.md)
+####[`.props()`](rule/props.md)
