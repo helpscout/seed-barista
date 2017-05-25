@@ -33,9 +33,8 @@ describe('harry component styles', function() {
 
 Barista's Mounted API uses jQuery to retrieve computed CSS styles.
 
-* **[`append()`](mount/append.md)**
-* **[`appendHTML()`](mount/appendHTML.md)**
+* **[`.append()`](mount/append.md)**
+* **[`.appendHTML()`](mount/appendHTML.md)**
 * **[`.find()`](mount/find.md)**
 * **[`.html()`](mount/html.md)**
 * **[`.render()`](mount/render.md)**
-* **[`.renderHTML()`](mount/renderHTML.md)**

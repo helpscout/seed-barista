@@ -1,5 +1,9 @@
 # seed-barista ☕️ [![Build Status](https://travis-ci.org/helpscout/seed-barista.svg?branch=master)](https://travis-ci.org/helpscout/seed-barista) [![npm version](https://badge.fury.io/js/seed-barista.svg)](https://badge.fury.io/js/seed-barista) [![dependencies Status](https://david-dm.org/helpscout/seed-barista/status.svg)](https://david-dm.org/helpscout/seed-barista)
 
+<div>
+<img src="https://github.com/helpscout/seed-barista/raw/master/barista.png" width="200" height="200" title="Barista">
+</div>
+
 Barista is a Javascript utility for (S)CSS unit testing, compatible with most major test runners and assertion libraries.
 
 Seed isn't required for Barista to work. Although, Barista does make it easier to write tests for Seed CSS.
