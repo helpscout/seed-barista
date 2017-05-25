@@ -1,6 +1,6 @@
 {
   "name": "seed-barista",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Test helper for Seed CSS",
   "main": "index.js",
   "scripts": {
