@@ -6,6 +6,7 @@ Barista accepts several options when instiating the test utility helper:
 var output = barista({
   ...options
 });
+```
 
 * [enableCSSOM](options/enableCSSOM.md)
 * [file](options/file.md)
