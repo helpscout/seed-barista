@@ -8,6 +8,7 @@ var output = barista({
 });
 ```
 
+* [content](options/content.md)
 * [enableCSSOM](options/enableCSSOM.md)
 * [file](options/file.md)
 * [includePaths](options/includePaths.md)
