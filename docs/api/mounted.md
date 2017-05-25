@@ -38,4 +38,3 @@ Barista's Mounted API uses jQuery to retrieve computed CSS styles.
 * **[`.find()`](mount/find.md)**
 * **[`.html()`](mount/html.md)**
 * **[`.render()`](mount/render.md)**
-* **[`.renderHTML()`](mount/renderHTML.md)**
