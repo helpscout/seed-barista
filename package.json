@@ -53,8 +53,8 @@
     "lodash.flatten": "4.4.0",
     "lodash.includes": "4.3.0",
     "lodash.some": "4.6.0",
-    "node-sass": "^3.10.0",
-    "postcss": "5.2.16",
+    "node-sass": "4.5.3",
+    "postcss": "6.0.1",
     "sass-pathfinder": "0.0.5",
     "seed-harvester": "0.1.5"
   }
