@@ -19,7 +19,7 @@ describe('harry component styles', function() {
 ```
 
 
-* ** barista(options)
+#### barista(options)
 
 | Argument | Type | Description |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ describe('harry component styles', function() {
 
 ## Standard API
 
-* **[`.exists()`](rule/exist.md)**
+* **[`.exists()`](rule/exists.md)**
 * **[`.hasProp()`](rule/hasProp.md)**
 * **[`.prop()`](rule/prop.md)**
 * **[`.props()`](rule/props.md)**
