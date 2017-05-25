@@ -74,7 +74,7 @@ Barista.prototype.resolveIncludePaths = function() {
 
   if (this.options.includePaths.length) {
     paths = pathfinder(this.options.includePaths).reduce(function(list, i) {
-      list.push(path.join(root, i));
+      list.push(path.join(root, i.replace(new RegExp(root, 'g'), '')));
       return list;
     }, []);
   }

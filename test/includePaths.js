@@ -2,6 +2,7 @@
 'use strict';
 
 var assert = require('chai').assert;
+var expect = require('chai').expect;
 var barista = require('../index');
 var findRoot = require('find-root');
 var path = require('path');
@@ -47,5 +48,27 @@ describe('barista { options: includePaths }', function() {
     });
 
     assert.isOk(expect);
+  });
+
+  it('should strip root path from paths submitted to includePaths', function() {
+    var output = barista({
+      content: '.pink-hot-is { color: hotpink; }',
+      includePaths: [path.join(root, 'one')],
+    });
+    var includePath = output.includePaths.find(p => p.includes('one'));
+
+    expect(includePath.includes(`${root}${root}`)).to.be.false;
+  });
+
+  it('should strip extra root path from includePaths, but preserve initial root', function() {
+    var output = barista({
+      content: '.pink-hot-is { color: hotpink; }',
+      includePaths: [path.join(root, 'one')],
+    });
+    var includePath = output.includePaths.find(p => p.includes('one'));
+
+    expect(includePath.includes(`${root}${root}`)).to.be.false;
+    expect(includePath.includes(root)).to.be.true;
+    expect(includePath.indexOf(root)).to.equal(0);
   });
 });
