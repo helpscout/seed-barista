@@ -7,7 +7,7 @@ var expect = require('chai').expect;
 
 describe('barista output.rule', function() {
 
-  describe('media queries', function() {
+  describe('media', function() {
     var styles = `
       .zero {
         background: none;
