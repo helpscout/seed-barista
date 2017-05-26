@@ -9,7 +9,7 @@ var path = require('path');
 var pathfinder = require('sass-pathfinder');
 var postcss = require('postcss');
 var sass = require('node-sass');
-var Parser = require('./lib/parser');
+var Rule = require('./lib/rule');
 var Output = require('./lib/output');
 
 var root = findRoot(__dirname).split('/node_modules')[0];
@@ -126,7 +126,7 @@ Barista.prototype.getSassOptions = function() {
 Barista.prototype.getCSSOM = function(cssData) {
   var output = {
     data: false,
-    parser: function() {
+    rule: function() {
       return false;
     },
   };
@@ -137,8 +137,8 @@ Barista.prototype.getCSSOM = function(cssData) {
 
   if (this.options.enableCSSOM) {
     output.data = postcss.parse(cssData);
-    output.parser = function(selector) {
-      return new Parser(output.data).create(selector);
+    output.rule = function(selector) {
+      return new Rule(output.data).create(selector);
     };
   }
 
@@ -162,11 +162,11 @@ Barista.prototype.render = function(options) {
   var CSSOM = this.getCSSOM(cssData);
 
   var o = {
-    $: CSSOM.parser, // Deprecated
+    $: CSSOM.rule, // Deprecated
     css: cssData,
     data: CSSOM.data,
     includePaths: sassOptions.includePaths,
-    rule: CSSOM.parser, // Replaces older $ method
+    rule: CSSOM.rule, // Replaces older $ method
     seed: this.options.seedIncludePaths,
   };
 
