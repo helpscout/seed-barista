@@ -3,10 +3,11 @@
 
 var assert = require('chai').assert;
 var barista = require('../index');
+var expect = require('chai').expect;
 
 describe('barista output.rule', function() {
 
-  describe('media queries', function() {
+  describe('media', function() {
     var styles = `
       .zero {
         background: none;
@@ -63,6 +64,29 @@ describe('barista output.rule', function() {
 
       assert.isNotOk(media);
     });
-  });
 
+    it('should find media query classes with backslash in class name', function() {
+      var styles = `
+        // From seed-flexy
+        .o-flexy { box-sizing: border-box; align-items: center; display: flex; justify-content: space-between; }
+        @media (min-width: 544px) { .o-flexy\\@sm { align-items: center; display: flex; justify-content: space-between; } }
+        @media (min-width: 768px) { .o-flexy\\@md { align-items: center; display: flex; justify-content: space-between; } }
+        @media (min-width: 992px) { .o-flexy\\@lg { align-items: center; display: flex; justify-content: space-between; } }
+      `;
+      var output = barista({
+        content: styles,
+      });
+      var sm = output.rule('.o-flexy@sm');
+      var smAt = output.rule('.o-flexy\@sm');
+      var smAtSlash = output.rule('.o-flexy\\@sm');
+
+      expect(sm.exists()).to.be.true;
+      expect(smAt.exists()).to.be.true;
+      expect(smAtSlash.exists()).to.be.true;
+      expect(sm.prop('align-items')).to.equal('center');
+      expect(sm.prop('display')).to.equal('flex');
+      expect(sm.prop('justify-content')).to.equal('space-between');
+    });
+
+  });
 });

@@ -33,5 +33,6 @@ describe('harry component styles', function() {
 
 * **[`.exists()`](rule/exists.md)**
 * **[`.hasProp()`](rule/hasProp.md)**
+* **[`.mediaQuery()`](rule/mq.md)**
 * **[`.prop()`](rule/prop.md)**
 * **[`.props()`](rule/props.md)**
