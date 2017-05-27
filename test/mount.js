@@ -1,4 +1,4 @@
-// Test :: Find
+// Test :: Mount
 'use strict';
 
 var barista = require('../index');

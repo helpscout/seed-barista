@@ -25,15 +25,15 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 
 ## Examples
 
-`.find()` provides a quick way to add and find a jQuery instance of a virtual DOM element. This allows you to use the jQuery's handy `.css()` method to test for CSS rules.
+`.find()` provides a quick way to add and find a jQuery instance of a virtual DOM element. To test it the element's styles, you'll need to use [`.prop()`](/prop.md), which is an alias for jQuery's handy `.css()` method.
 
 ```js
 var output = barista({ ... }).mount();
 var span = output.find('div.kip span.cage-fighter');
 
-expect(span.css('color')).to.equal('red');
-expect(span.css('display')).to.equal('inline-block');
-expect(span.css('position')).to.equal('relative');
+expect(span.prop('color')).to.equal('red');
+expect(span.prop('display')).to.equal('inline-block');
+expect(span.prop('position')).to.equal('relative');
 ```
 
 

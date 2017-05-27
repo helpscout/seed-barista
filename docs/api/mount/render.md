@@ -25,7 +25,7 @@ Your `BaristaOutput` instance must first be mounted with `.mount()`.
 
 ## Examples
 
-`.render()` provides a quick way to add virtual DOM elements. To test it the element's styles, you'll need to use the jQuery's handy `.css()` method.
+`.render()` provides a quick way to add virtual DOM elements. To test it the element's styles, you'll need to use [`.prop()`](/prop.md), which is an alias for jQuery's handy `.css()` method.
 
 ```js
 var output = barista({ ... }).mount();
@@ -36,9 +36,9 @@ output.render('div.kip span.cage-fighter');
 var span = output.dom.$('div.kip span.cage-fighter');
 
 // Testing the selector's CSS
-expect(span.css('color')).to.equal('red');
-expect(span.css('display')).to.equal('inline-block');
-expect(span.css('position')).to.equal('relative');
+expect(span.prop('color')).to.equal('red');
+expect(span.prop('display')).to.equal('inline-block');
+expect(span.prop('position')).to.equal('relative');
 ```
 
 
