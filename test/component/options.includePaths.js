@@ -1,15 +1,12 @@
-// Test :: includePaths
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var assert = require('chai').assert;
-var expect = require('chai').expect;
-var barista = require('../index');
 var findRoot = require('find-root');
 var path = require('path');
 var root = findRoot(__dirname).split('/node_modules')[0];
 var some = require('lodash.some');
 
-describe('barista { options: includePaths }', function() {
+describe('options: includePaths', function() {
   it('should extend default includePaths with custom paths', function() {
     var output = barista({
       content: '.pink-hot-is { color: hotpink; }',

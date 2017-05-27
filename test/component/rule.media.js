@@ -1,12 +1,7 @@
-// Test :: Parser :: Media
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var assert = require('chai').assert;
-var barista = require('../index');
-var expect = require('chai').expect;
-
-describe('barista output.rule', function() {
-
+describe('output.rule', function() {
   describe('media', function() {
     var styles = `
       .zero {

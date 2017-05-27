@@ -1,10 +1,7 @@
-// Test :: File
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var assert = require('chai').assert;
-var barista = require('../index');
-
-describe('barista { options: file }', function() {
+describe('options: file', function() {
   it('should return false if no file is defined', function() {
     var output = barista({ yourawizard: 'harry' });
 
@@ -19,6 +16,7 @@ describe('barista { options: file }', function() {
 
   it('should read CSS from a file defined in options', function() {
     var output = barista({
+      src: 'test/component/scss',
       file: 'simple-css.scss'
     });
     var expect = output.css.indexOf('.simple') >= 0;
@@ -36,6 +34,7 @@ describe('barista { options: file }', function() {
 
   it('should read and compile SCSS from a file defined in options', function() {
     var output = barista({
+      src: 'test/component/scss',
       file: 'simple-sass.scss'
     });
     var expect = output.css.indexOf('margin: 3') >= 0;

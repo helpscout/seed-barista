@@ -2,8 +2,7 @@
 'use strict';
 
 var expect = require('chai').expect;
-var barista = require('../../index');
-// Replace above with:
+// Add:
 // var barista = require('seed-barista');
 
 describe('example: test: button', function() {

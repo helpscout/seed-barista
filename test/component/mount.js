@@ -1,11 +1,7 @@
-// Test :: Mount
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var barista = require('../index');
-var expect = require('chai').expect;
-var sinon = require('sinon');
-
-describe('barista output.mount', function() {
+describe('output.mount', function() {
   describe('.mount()', function() {
     it('should provide access to window, document, and dom after mounting', function() {
       var styles = `

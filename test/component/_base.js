@@ -1,11 +1,7 @@
-// Test :: Barista
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var assert = require('chai').assert;
-var barista = require('../index');
-var BaristaOutput = require('../lib/output');
-
-describe('barista', function() {
+describe('base', function() {
   it('should return false if no options are passed', function() {
     var output = barista();
 

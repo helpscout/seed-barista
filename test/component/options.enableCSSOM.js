@@ -1,11 +1,8 @@
-// Test :: enableCSSOM
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 /*jshint expr: true*/
 'use strict';
 
-var barista = require('../index');
-var expect = require('chai').expect;
-
-describe('barista { options: enableCSSOM }', function() {
+describe('options: enableCSSOM', function() {
   var styles = 'html { background: red; }';
 
   it('should have CSSOM included as barista().data by default', function() {

@@ -1,11 +1,9 @@
-// Test :: includeSeedPaths
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var assert = require('chai').assert;
-var barista = require('../index');
 var some = require('lodash.some');
 
-describe('barista { options: includeSeedPaths }', function() {
+describe('options: includeSeedPaths', function() {
   it('should include seed-pack paths by default', function() {
     var output = barista({
       content: '.pink-hot-is { color: hotpink; }'

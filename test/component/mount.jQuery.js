@@ -1,11 +1,7 @@
-// Test :: Mount :: Prop
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var barista = require('../index');
-var expect = require('chai').expect;
-var sinon = require('sinon');
-
-describe('barista output.mount', function() {
+describe('output.mount', function() {
   describe('.dom.$()', function() {
     describe('.prop()', function() {
       it('should be able to get props with .prop()', function() {

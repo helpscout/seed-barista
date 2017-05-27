@@ -1,10 +1,7 @@
-// Test :: Rule :: At
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var expect = require('chai').expect;
-var barista = require('../index');
-
-describe('barista output.rule', function() {
+describe('output.rule', function() {
   describe('at', function() {
     var styles = `
       .machi {

@@ -16,7 +16,10 @@
   "eqnull": true,
   "globals": {
     "assert": true,
+    "barista": true,
+    "expect": true,
     "describe": true,
-    "it": true
+    "it": true,
+    "sinon": true
   }
 }

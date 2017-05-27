@@ -1,10 +1,7 @@
-// Test :: content
+/* globals barista: true, expect: true, describe: true, it: true, sinon: true */
 'use strict';
 
-var assert = require('chai').assert;
-var barista = require('../index');
-
-describe('barista { options: content }', function() {
+describe('options: content', function() {
   it('should return false if no content is defined', function() {
     var output = barista({ yourawizard: 'harry' });
 
