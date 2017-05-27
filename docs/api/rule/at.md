@@ -36,7 +36,7 @@ The values in the `array` work like keywords. The Rule that is returned is the f
 
 ```js
 var output = barista({ ... }).mount();
-var rule = output.rule.at(['min', '480px']);
+var rule = output.rule('.vote-pedro').at(['min', '480px']);
 
 expect(rule.prop('position')).to.equal('absolute');
 ```
@@ -45,7 +45,7 @@ Although the following example does work, it is best to **avoid** being overly v
 
 ```js
 var output = barista({ ... }).mount();
-var rule = output.rule.at(['4']); // 4 what?! Vote 4 Pedro perhaps?
+var rule = output.rule('.vote-pedro').at(['4']); // 4 what?! Vote 4 Pedro perhaps?
 
 expect(rule.prop('position')).to.equal('absolute');
 ```
@@ -59,7 +59,7 @@ You may omitted parentheses from your `string`. However it must match the **enti
 
 ```js
 var output = barista({ ... }).mount();
-var rule = output.rule.at('min-width: 600px');
+var rule = output.rule('.pedro--medieval-warrior').at('min-width: 600px');
 
 expect(rule.prop('display')).to.equal('block');
 ```
