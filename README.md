@@ -57,7 +57,6 @@ describe('harry component styles', function() {
     var output = barista({ file: '_wizard.scss' }).mount();
     var rule = output.find('.your-a-wizard.harry');
 
-    expect(rule.length).to.be.above(1);
     expect(rule.prop('background')).to.equal('red');
     expect(rule.prop('color')).to.equal('yellow');
   });
