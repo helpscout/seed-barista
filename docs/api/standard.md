@@ -31,6 +31,7 @@ describe('harry component styles', function() {
 
 ## Standard API
 
+* **[`.at()`](rule/at.md)**
 * **[`.exists()`](rule/exists.md)**
 * **[`.hasProp()`](rule/hasProp.md)**
 * **[`.mediaQuery()`](rule/mq.md)**
