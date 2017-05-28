@@ -7,9 +7,9 @@
     "lint": "jshint index.js lib/",
     "test:unit": "mocha test/setup.mocha.js --recursive test/unit/",
     "test:unit:watch": "mocha test/setup.mocha.js --recursive test/unit/ --watch",
-    "test:component": "mocha test/setup.mocha.js --recursive test/component/",
-    "test:component:watch": "mocha test/setup.mocha.js --recursive test/component/ --watch",
-    "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/component/ --watch",
+    "test:integration": "mocha test/setup.mocha.js --recursive test/integration/",
+    "test:integration:watch": "mocha test/setup.mocha.js --recursive test/integration/ --watch",
+    "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch",
     "test": "npm run test:unit && npm run test:component"
   },
   "repository": {

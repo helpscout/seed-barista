@@ -15,7 +15,7 @@ describe('output', function() {
 
     it('should return a string from a parsed file', function() {
       var output = barista({
-        src: 'test/component/scss',
+        src: 'test/integration/scss',
         file: 'simple-css.scss'
       });
       var expect = typeof(output.css) === 'string';
@@ -37,7 +37,7 @@ describe('output', function() {
 
     it('should return an object from a parsed file', function() {
       var output = barista({
-        src: 'test/component/scss',
+        src: 'test/integration/scss',
         file: 'simple-css.scss'
       });
       var expect = typeof(output.data) === 'object';

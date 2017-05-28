@@ -23,7 +23,7 @@ describe('options: src', function() {
   it('should render files from custom path if defined', function() {
     var output = barista({
       file: 'custom-path-test.scss',
-      src: 'test/component/custom-path-test/',
+      src: 'test/integration/custom-path-test/',
     });
     var expect = output.css.indexOf('.simple') >= 0;
 

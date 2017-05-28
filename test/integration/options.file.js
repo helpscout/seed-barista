@@ -16,7 +16,7 @@ describe('options: file', function() {
 
   it('should read CSS from a file defined in options', function() {
     var output = barista({
-      src: 'test/component/scss',
+      src: 'test/integration/scss',
       file: 'simple-css.scss'
     });
     var expect = output.css.indexOf('.simple') >= 0;
@@ -34,7 +34,7 @@ describe('options: file', function() {
 
   it('should read and compile SCSS from a file defined in options', function() {
     var output = barista({
-      src: 'test/component/scss',
+      src: 'test/integration/scss',
       file: 'simple-sass.scss'
     });
     var expect = output.css.indexOf('margin: 3') >= 0;
