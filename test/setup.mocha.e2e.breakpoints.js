@@ -5,7 +5,7 @@ const includePaths = [
   'test/e2e/seed-breakpoints/scss/pack/seed-breakpoints',
 ];
 
-global.barista = (o = {}) => {
+global.barista = (o) => {
   const options = Object.assign({}, {
     includePaths,
   }, o);

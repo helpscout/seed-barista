@@ -1,5 +1,4 @@
 /* globals barista: true, expect: true, describe: true, it: true, sinon: true */
-require('babel-register')();
 
 const assert = require('chai').assert;
 const expect = require('chai').expect;
