@@ -10,7 +10,7 @@
     "test:integration": "mocha test/setup.mocha.js --recursive test/integration/",
     "test:integration:watch": "mocha test/setup.mocha.js --recursive test/integration/ --watch",
     "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch",
-    "test": "npm run test:unit && npm run test:component"
+    "test": "npm run test:unit && npm run test:integration"
   },
   "repository": {
     "type": "git",
