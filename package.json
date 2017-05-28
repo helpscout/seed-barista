@@ -9,8 +9,9 @@
     "test:unit:watch": "mocha test/setup.mocha.js --recursive test/unit/ --watch",
     "test:integration": "mocha test/setup.mocha.js --recursive test/integration/",
     "test:integration:watch": "mocha test/setup.mocha.js --recursive test/integration/ --watch",
+    "test:e2e": "mocha test/setup.mocha.e2e.js --recursive test/e2e/seed-breakpoints/test/*.js",
     "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch",
-    "test": "npm run test:unit && npm run test:integration"
+    "test": "npm run test:unit && npm run test:integration && npm run test:e2e"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "jshint": "2.9.4",
     "mocha": "3.4.2",
     "seed-breakpoints": "0.4.0",
+    "seed-props": "0.3.1",
     "sinon": "2.3.1"
   },
   "dependencies": {

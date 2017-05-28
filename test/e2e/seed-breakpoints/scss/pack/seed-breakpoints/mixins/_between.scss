@@ -1,0 +1,39 @@
+// Mixins :: Breakpoint-between
+
+@import "../config";
+
+@mixin breakpoint-between($min: false, $max: false, $breakpoints: $seed-breakpoints) {
+  @if $min == false or $max == false {
+    @error "breakpoint-between: The first argument (min) and second argument (max) must be defined.";
+  }
+
+  $map-min: false;
+  $map-max: false;
+
+  @if map-has-key($breakpoints, $min) {
+    $map-min: map-get($breakpoints, $min);
+  }
+  @if map-has-key($breakpoints, $max) {
+    $map-max: map-get($breakpoints, $max);
+
+    @if $map-max {
+      $map-max: $map-max - 1px;
+    }
+  }
+  @if not $map-min {
+    @if type-of($min) == "number" {
+      $map-min: $min;
+    }
+  }
+  @if not $map-max {
+    @if type-of($max) == "number" {
+      $map-max: $max;
+    }
+  }
+
+  @if $map-min and $map-max {
+    @media (min-width: $map-min) and (max-width: $map-max) {
+      @content;
+    }
+  }
+}

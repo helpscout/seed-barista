@@ -1,0 +1,18 @@
+// Mixins :: Breakpoint
+
+@import "../config";
+
+@mixin breakpoint($value, $breakpoints: $seed-breakpoints) {
+  @if map-has-key($breakpoints, $value) {
+    @media (min-width: #{map-get($breakpoints, $value)}) {
+      @content;
+    }
+  }
+  @else {
+    @if type-of($value) == "number" {
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+  }
+}
