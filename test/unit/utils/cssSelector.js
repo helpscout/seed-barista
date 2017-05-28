@@ -22,6 +22,27 @@ describe('utils', () => {
       });
     });
 
+    describe('.sanitizeForEmmet()', () => {
+      const fn = cssSelector.sanitizeForEmmet;
+
+      it('should return false if arguments are invalid', () => {
+        expect(fn()).to.be.false;
+        expect(fn('')).to.be.false;
+      });
+
+      it('should trim whitespace before/after string', () => {
+        expect(fn(' div ')).to.equal('div');
+      });
+
+      it('should add > symbol for space', () => {
+        expect(fn('div li')).to.equal('div > li');
+      });
+
+      it('should resolve excess spacing', () => {
+        expect(fn('div     li')).to.equal('div > li');
+      });
+    });
+
     describe('.split()', () => {
       const fn = cssSelector.split;
 

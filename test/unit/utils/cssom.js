@@ -14,6 +14,117 @@ describe('utils', () => {
       });
     });
 
+    describe('.isRule()', () => {
+      const fn = cssom.isRule;
+
+      it('should return true if valid (based on PostCSS AST)', () => {
+        expect(fn()).to.be.false;
+        expect(fn({})).to.be.false;
+        expect(fn({ type: 'rule' })).to.be.true;
+      });
+    });
+
+    describe('.isSelector()', () => {
+      const fn = cssom.isSelector;
+
+      it('should return true if valid (based on PostCSS AST)', () => {
+        expect(fn()).to.be.false;
+        expect(fn({})).to.be.false;
+        expect(fn({ nodes: true })).to.be.true;
+      });
+    });
+
+    describe('.findSelectorsFromNodes()', () => {
+      const fn = cssom.findSelectorsFromNodes;
+
+      it('should return false if invalid args', () => {
+        expect(fn()).to.be.false;
+        expect(fn(true, '')).to.be.false;
+        expect(fn({}, '.body')).to.be.false;
+      });
+
+      it('should return empty array if selectors cannot be found from nodes', () => {
+        expect(fn([{ selector: '.html' }], '.body')).to.be.an('array').and.to.have.lengthOf(0);
+      });
+
+      it('should return selector it exists in node', () => {
+        expect(fn([{ selector: '.body' }], '.body')).to.be.an('array').and.to.have.lengthOf(1);
+      });
+    });
+
+    describe('.findSelectorFromParamsByString()', () => {
+      const fn = cssom.findSelectorFromParamsByString;
+
+      it('should return false if invalid args', () => {
+        expect(fn()).to.be.false;
+        expect(fn(true, '')).to.be.false;
+        expect(fn({}, '.body')).to.be.false;
+      });
+    });
+
+    describe('.findSelectorFromParamsByArray()', () => {
+      const fn = cssom.findSelectorFromParamsByArray;
+
+      it('should return false if invalid args', () => {
+        expect(fn()).to.be.undefined;
+        expect(fn(true, '')).to.be.false;
+        expect(fn({}, '.body')).to.be.false;
+        expect(fn([], '.body')).to.be.false;
+        expect(fn([], [])).to.be.undefined;
+      });
+    });
+
+    describe('.getAtRules()', () => {
+      const fn = cssom.getAtRules;
+
+      it('should return empty array if invalid args', () => {
+        expect(fn()).to.be.an('array').and.have.lengthOf(0);
+        expect(fn([], '')).to.be.an('array').and.have.lengthOf(0);
+      });
+    });
+
+    describe('.getAtRuleFromSelector()', () => {
+      const fn = cssom.getAtRuleFromSelector;
+
+      it('should return false if selector isn\'t a nested rule', () => {
+        expect(fn()).to.be.false;
+        expect(fn('.selector')).to.be.false;
+        expect(fn({ selector: '.selector'})).to.be.false;
+      });
+
+      it('should return rule if selector is a nested rule', () => {
+        expect(fn({ parent: { type: 'atrule' } })).to.not.be.false;
+      });
+    });
+
+    describe('.getParamNodes', () => {
+      const fn = cssom.getParamNodes;
+
+      it('should return empty array if invalid args', () => {
+        expect(fn()).to.be.an('array').and.to.have.lengthOf(0);
+        expect(fn('true')).to.be.an('array').and.to.have.lengthOf(0);
+        expect(fn(true)).to.be.an('array').and.to.have.lengthOf(0);
+      });
+    });
+
+    describe('.getPropsFromSelector()', () => {
+      const fn = cssom.getPropsFromSelector;
+
+      it('should return false if invalid args', () => {
+        expect(fn()).to.be.false;
+        expect(fn({})).to.be.false;
+      });
+    });
+
+    describe('.getPropDataFromSelector()', () => {
+      const fn = cssom.getPropDataFromSelector;
+
+      it('should return false if invalid args', () => {
+        expect(fn()).to.be.false;
+        expect(fn({}, '')).to.be.false;
+      });
+    });
+
     describe('.getRuleParams()', () => {
       const fn = cssom.getRuleParams;
 
@@ -52,6 +163,25 @@ describe('utils', () => {
         expect(cssom.nodes).to.exist;
         expect(cssom.source).to.exist;
         expect(cssom.type).to.equal('root');
+      });
+    });
+
+    describe('.sanitizeParens()', () => {
+      const fn = cssom.sanitizeParens;
+
+      it('should return arg if arg (string) is invalid', () => {
+        expect(fn('')).to.equal('');
+        expect(fn(true)).to.equal(true);
+        expect(fn(123)).to.equal(123);
+      });
+
+      it('should strip parenthesis', () => {
+        expect(fn('((content))(rule)((()))')).to.not.contain('(');
+        expect(fn('((content))(rule)((()))')).to.not.contain(')');
+      });
+
+      it('should return rule in lowercase', () => {
+        expect(fn('(CoNtEnT)')).to.equal('content');
       });
     });
   });

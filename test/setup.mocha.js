@@ -26,6 +26,9 @@ global.utils = {
   cssFile: require('../lib/utils/cssFile'),
   cssSelector: require('../lib/utils/cssSelector'),
   cssom: require('../lib/utils/cssom'),
+  isString: require('../lib/utils/isString'),
   isValid: require('../lib/utils/isValid'),
+  renderer: require('../lib/utils/renderer'),
   resolve: require('../lib/utils/resolve'),
+  sass: require('../lib/utils/sass'),
 };
