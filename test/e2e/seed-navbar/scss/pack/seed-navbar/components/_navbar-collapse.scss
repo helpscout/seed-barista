@@ -1,0 +1,34 @@
+// Components :: Navbar Collapse
+
+// Dependencies
+@import "pack/seed-breakpoints/_index";
+@import "pack/seed-publish/_index";
+@import "../config";
+
+@include export(seed-navbar) {
+  .#{$seed-navbar-collapse-namespace},
+  .#{$seed-navbar-item-namespace}.#{$seed-navbar-collapse-namespace} {
+    box-sizing: border-box;
+    display: none;
+
+    @include breakpoint(md) {
+      display: block !important;
+    }
+
+    // States
+    &.in,
+    &.show {
+      display: block;
+    }
+  }
+
+  // Collapsing animation
+  .#{$seed-navbar-collapsing-namespace} {
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    transition-duration: 0.35s;
+    transition-property: height, visibility;
+    transition-timing-function: ease;
+  }
+}

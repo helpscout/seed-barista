@@ -1,0 +1,33 @@
+// Components :: Navbar Toggle Icon
+
+// Dependencies
+@import "pack/seed-publish/_index";
+@import "../config";
+
+@include export(seed-navbar) {
+  .#{$seed-navbar-toggle-icon-namespace} {
+    $icon-bar: 2px;
+    $icon-bar-spacing: 6px;
+
+    box-sizing: border-box;
+    color: $seed-navbar-toggle-icon-border-color;
+    display: block;
+    height: $seed-navbar-toggle-icon-size;
+    width: $seed-navbar-toggle-icon-size;
+    position: relative;
+
+    &::before {
+      background-color: currentColor;
+      box-shadow: #{
+        0 ceil($icon-bar-spacing * 1) 0 currentColor,
+        0 ceil($icon-bar-spacing * 2) 0 currentColor,
+      };
+      content: "";
+      display: block;
+      height: $icon-bar;
+      position: relative;
+      top: ceil($icon-bar-spacing / 2);
+      width: 100%;
+    }
+  }
+}

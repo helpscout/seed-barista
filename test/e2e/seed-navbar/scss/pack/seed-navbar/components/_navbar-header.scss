@@ -1,0 +1,24 @@
+// Components :: Navbar Header
+
+// Dependencies
+@import "pack/seed-breakpoints/_index";
+@import "pack/seed-publish/_index";
+@import "../config";
+
+@include export(seed-navbar) {
+  .#{$seed-navbar-header-namespace} {
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: #{$seed-navbar-min-height};
+    position: relative;
+    width: 100%;
+
+    @include breakpoint(md) {
+      width: auto;
+    }
+  }
+}

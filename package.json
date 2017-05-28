@@ -12,7 +12,9 @@
     "test:acceptance:common": "mocha test/acceptance/common.js",
     "test:acceptance:es6": "mocha test/setup.mocha.es6.js test/acceptance/es6.js",
     "test:acceptance": "npm run test:acceptance:common && npm run test:acceptance:es6",
-    "test:e2e": "mocha test/setup.mocha.e2e.js --recursive test/e2e/seed-breakpoints/test/",
+    "test:e2e:breakpoints": "mocha test/setup.mocha.e2e.breakpoints.js --recursive test/e2e/seed-breakpoints/test/",
+    "test:e2e:navbar": "mocha test/setup.mocha.e2e.navbar.js --recursive test/e2e/seed-navbar/test/",
+    "test:e2e": "npm run test:e2e:breakpoints && npm run test:e2e:navbar",
     "test:dot:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch --reporter dot",
     "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch",
     "test": "npm run test:unit && npm run test:integration && npm run test:acceptance && npm run test:e2e"
@@ -55,7 +57,11 @@
     "jshint": "2.9.4",
     "mocha": "3.4.2",
     "seed-breakpoints": "0.4.0",
+    "seed-button": "0.1.16",
+    "seed-dropdown": "0.0.8",
+    "seed-nav": "0.0.1",
     "seed-props": "0.3.1",
+    "seed-publish": "0.1.1",
     "sinon": "2.3.1"
   },
   "dependencies": {

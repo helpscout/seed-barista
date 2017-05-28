@@ -1,0 +1,62 @@
+// Components :: Navbar
+
+// Dependencies
+@import "pack/seed-publish/_index";
+@import "pack/seed-breakpoints/_index";
+@import "pack/seed-dropdown/config";
+@import "pack/seed-nav/config";
+@import "../config";
+
+@include export(seed-navbar) {
+  .#{$seed-navbar-namespace} {
+    box-sizing: border-box;
+    align-items: center;
+    display: block;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: #{$seed-navbar-min-height};
+    position: relative;
+
+    @include breakpoint(md) {
+      display: flex;
+    }
+
+    // Adjust seed-nav
+    .#{$seed-nav-namespace} {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    .#{$seed-nav-link-namespace} {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    // Adjust seed-dropdown
+    .#{$seed-dropdown-namespace} {
+      &.open,
+      &.show {
+        .#{$seed-dropdown-toggle-namespace} {
+          &::before {
+            background-color: transparent;
+          }
+        }
+
+        .#{$seed-dropdown-menu-namespace} {
+          display: block;
+          @include breakpoint-max(md) {
+            border: none;
+            max-width: none;
+            position: static;
+            width: auto;
+          }
+        }
+      }
+    }
+    .#{$seed-dropdown-toggle-namespace} {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  }
+}
