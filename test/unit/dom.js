@@ -1,4 +1,4 @@
-/* globals barista: true, expect: true, describe: true, it: true, sinon: true, utils: true */
+/* globals barista: true, expect: true, describe: true, it: true, lib: true, sinon: true, utils: true */
 
 const DOM = global.lib.dom;
 

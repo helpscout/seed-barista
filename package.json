@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "jshint index.js lib/",
+    "coverage": "nyc mocha test/setup.mocha.js --recursive --reporter dot test/unit test/integration",
     "test:unit": "mocha test/setup.mocha.js --recursive test/unit/",
     "test:unit:watch": "mocha test/setup.mocha.js --recursive test/unit/ --watch",
     "test:integration": "mocha test/setup.mocha.js --recursive test/integration/",
@@ -18,6 +19,12 @@
     "test:dot:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch --reporter dot",
     "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch",
     "test": "npm run test:unit && npm run test:integration && npm run test:acceptance && npm run test:e2e"
+  },
+  "nyc": {
+    "exclude": [
+      "lib/vendor/**/*.js",
+      "test/**/*.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -56,6 +63,7 @@
     "chai": "4.0.0",
     "jshint": "2.9.4",
     "mocha": "3.4.2",
+    "nyc": "10.3.2",
     "seed-breakpoints": "0.4.1",
     "seed-button": "0.1.16",
     "seed-dropdown": "0.0.8",

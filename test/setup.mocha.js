@@ -12,11 +12,20 @@ global.BaristaOutput = BaristaOutput;
 global.expect = expect;
 global.sinon = sinon;
 
+global.options = {
+  barista: require('../lib/defaults/barista'),
+};
+
 global.lib = {
   dom: require('../lib/dom'),
+  output: require('../lib/output'),
+  rule: require('../lib/rule'),
 };
 
 global.utils = {
+  cssFile: require('../lib/utils/cssFile'),
+  cssSelector: require('../lib/utils/cssSelector'),
   cssom: require('../lib/utils/cssom'),
   isValid: require('../lib/utils/isValid'),
+  resolve: require('../lib/utils/resolve'),
 };
