@@ -13,6 +13,7 @@
     "test:acceptance:es6": "mocha test/setup.mocha.es6.js test/acceptance/es6.js",
     "test:acceptance": "npm run test:acceptance:common && npm run test:acceptance:es6",
     "test:e2e": "mocha test/setup.mocha.e2e.js --recursive test/e2e/seed-breakpoints/test/",
+    "test:dot:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch --reporter dot",
     "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch",
     "test": "npm run test:unit && npm run test:integration && npm run test:acceptance && npm run test:e2e"
   },
@@ -61,6 +62,7 @@
     "css-mq-parser": "0.0.3",
     "find-root": "1.0.0",
     "genki": "0.0.5",
+    "lodash": "4.17.4",
     "lodash.assign": "4.2.0",
     "lodash.find": "4.6.0",
     "lodash.flatten": "4.4.0",
