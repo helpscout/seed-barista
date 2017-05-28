@@ -9,9 +9,12 @@
     "test:unit:watch": "mocha test/setup.mocha.js --recursive test/unit/ --watch",
     "test:integration": "mocha test/setup.mocha.js --recursive test/integration/",
     "test:integration:watch": "mocha test/setup.mocha.js --recursive test/integration/ --watch",
-    "test:e2e": "mocha test/setup.mocha.e2e.js --recursive test/e2e/seed-breakpoints/test/*.js",
+    "test:acceptance:common": "mocha test/acceptance/common.js",
+    "test:acceptance:es6": "mocha test/setup.mocha.es6.js test/acceptance/es6.js",
+    "test:acceptance": "npm run test:acceptance:common && npm run test:acceptance:es6",
+    "test:e2e": "mocha test/setup.mocha.e2e.js --recursive test/e2e/seed-breakpoints/test/",
     "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch",
-    "test": "npm run test:unit && npm run test:integration && npm run test:e2e"
+    "test": "npm run test:unit && npm run test:integration && npm run test:acceptance && npm run test:e2e"
   },
   "repository": {
     "type": "git",
@@ -45,6 +48,8 @@
     "node": ">=4"
   },
   "devDependencies": {
+    "babel-core": "6.24.1",
+    "babel-preset-es2015": "6.24.1",
     "chai": "3.5.0",
     "jshint": "2.9.4",
     "mocha": "3.4.2",
