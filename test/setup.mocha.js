@@ -12,6 +12,10 @@ global.BaristaOutput = BaristaOutput;
 global.expect = expect;
 global.sinon = sinon;
 
+global.lib = {
+  dom: require('../lib/dom'),
+};
+
 global.utils = {
   cssom: require('../lib/utils/cssom'),
   isValid: require('../lib/utils/isValid'),
