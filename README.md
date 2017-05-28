@@ -70,4 +70,4 @@ Check out the full [API documentation](/docs/api/mounted.md)
 
 ## Examples
 
-**Check out an [example test](https://github.com/helpscout/seed-barista/tree/master/test/examples)**
+**Check out an [example test](https://github.com/helpscout/seed-barista/blob/master/test/integration/examples/button.js)**
