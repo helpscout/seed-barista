@@ -11,3 +11,8 @@ global.barista = barista;
 global.BaristaOutput = BaristaOutput;
 global.expect = expect;
 global.sinon = sinon;
+
+global.utils = {
+  cssom: require('../lib/utils/cssom'),
+  isValid: require('../lib/utils/isValid'),
+};
