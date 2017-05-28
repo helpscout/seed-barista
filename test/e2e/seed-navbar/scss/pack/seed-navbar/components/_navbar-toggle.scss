@@ -1,0 +1,18 @@
+// Components :: Navbar Toggle
+
+// Dependencies
+@import "pack/seed-breakpoints/_index";
+@import "pack/seed-publish/_index";
+@import "../config";
+
+@include export(seed-navbar) {
+  .#{$seed-navbar-toggle-namespace} {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+
+    @include breakpoint(md) {
+      display: none;
+    }
+  }
+}

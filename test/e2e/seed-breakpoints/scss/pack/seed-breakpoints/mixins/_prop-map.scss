@@ -1,0 +1,23 @@
+// Mixins :: Breakpoint :: Prop Map
+
+@import "pack/seed-props/_index";
+@import "../config";
+
+// This combines the functionality of breakpoint-all and prop-map from seed-props
+@mixin breakpoint-prop-map($map, $properties) {
+  @each $name, $breakpoint in $seed-breakpoints {
+    @if($breakpoint == 0) {
+      @include prop-map($map, $properties) {
+        @content;
+      }
+    }
+    @else {
+      @include breakpoint($name) {
+        $class_suffix: #{$seed-breakpoints-at-namespace}#{$name};
+        @include prop-map($map, $properties, $class_suffix) {
+          @content;
+        }
+      }
+    }
+  }
+}

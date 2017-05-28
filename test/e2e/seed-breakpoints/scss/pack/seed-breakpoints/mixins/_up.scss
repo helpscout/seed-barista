@@ -1,0 +1,14 @@
+// Mixins :: Breakpoint :: Up
+
+@import "../config";
+
+@mixin breakpoint-up($name, $breakpoints: $seed-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

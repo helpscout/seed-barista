@@ -1,0 +1,18 @@
+// Mixins :: Breakpoint-Max
+
+@import "../config";
+
+@mixin breakpoint-max($value, $breakpoints: $seed-breakpoints) {
+  @if map-has-key($breakpoints, $value) {
+    @media (max-width: #{map-get($breakpoints, $value)} - 1px) {
+      @content;
+    }
+  }
+  @else {
+    @if type-of($value) == "number" {
+      @media (max-width: $value) {
+        @content;
+      }
+    }
+  }
+}

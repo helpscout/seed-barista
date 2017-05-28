@@ -1,0 +1,10 @@
+// Mixins :: Breakpoint-min
+// Alias of :: @mixin breakpoint
+
+@import "../config";
+
+@mixin breakpoint-min($arguments...) {
+  @include breakpoint($arguments...) {
+    @content;
+  }
+}

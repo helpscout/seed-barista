@@ -1,0 +1,17 @@
+// Mixins :: Breakpoint :: Each
+
+@import "../config";
+
+// Each breakpoint
+// Loops through all the breakpoints and outputs attributes
+@mixin breakpoint-each() {
+  @each $name, $breakpoint in $seed-breakpoints {
+    @if($breakpoint != 0) {
+      @include breakpoint($name) {
+        &#{$seed-breakpoints-at-namespace}#{$name} {
+          @content;
+        }
+      }
+    }
+  }
+}

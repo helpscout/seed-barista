@@ -1,0 +1,18 @@
+// Mixins :: Breakpoint :: Down
+
+@import "../config";
+
+@mixin breakpoint-down() {
+  @each $name, $breakpoint in $seed-breakpoints {
+    @if($breakpoint == 0) {
+      @content;
+    }
+    @else {
+      @include breakpoint-max($name) {
+        &#{$seed-breakpoints-at-namespace}#{$name} {
+          @content;
+        }
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ Seed isn't required for Barista to work. Although, Barista does make it easier t
 For added convenience, we recommend trying out [seed-bistro](https://github.com/helpscout/seed-bistro).<br>
 It comes with Barista + other libraries for CSS testing goodness 🙌
 
+The latest versions of Barista require **Node.js v6** or newer to work (and not explode).
 
 ## Install
 ```

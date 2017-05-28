@@ -5,7 +5,24 @@
   "main": "index.js",
   "scripts": {
     "lint": "jshint index.js lib/",
-    "test": "mocha --recursive"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test:coverage": "nyc --reporter=html --reporter=text mocha test/setup.mocha.js --recursive test/unit test/integration --reporter=dot",
+    "test:unit": "mocha test/setup.mocha.js --recursive test/unit/",
+    "test:integration": "mocha test/setup.mocha.js --recursive test/integration/",
+    "test:acceptance:common": "mocha test/acceptance/common.js",
+    "test:acceptance:es6": "mocha test/setup.mocha.es6.js test/acceptance/es6.js",
+    "test:acceptance": "npm run test:acceptance:common && npm run test:acceptance:es6",
+    "test:e2e:breakpoints": "mocha test/setup.mocha.e2e.breakpoints.js --recursive test/e2e/seed-breakpoints/test/",
+    "test:e2e:navbar": "mocha test/setup.mocha.e2e.navbar.js --recursive test/e2e/seed-navbar/test/",
+    "test:e2e": "npm run test:e2e:breakpoints && npm run test:e2e:navbar",
+    "test:watch": "mocha test/setup.mocha.js --recursive test/unit/ test/integration/ --watch --reporter dot",
+    "test": "npm run test:unit && npm run test:integration && npm run test:acceptance && npm run test:e2e"
+  },
+  "nyc": {
+    "exclude": [
+      "lib/vendor/**/*.js",
+      "test/**/*.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -39,21 +56,29 @@
     "node": ">=4"
   },
   "devDependencies": {
-    "chai": "3.5.0",
+    "babel-core": "6.24.1",
+    "babel-preset-es2015": "6.24.1",
+    "chai": "4.0.0",
+    "coveralls": "2.13.1",
     "jshint": "2.9.4",
     "mocha": "3.4.2",
-    "seed-breakpoints": "0.4.0",
-    "sinon": "2.3.1"
+    "mocha-lcov-reporter": "1.3.0",
+    "nyc": "10.3.2",
+    "seed-breakpoints": "0.4.1",
+    "seed-button": "0.1.16",
+    "seed-dropdown": "0.0.8",
+    "seed-nav": "0.0.2",
+    "seed-props": "0.3.1",
+    "seed-publish": "0.2.0",
+    "sinon": "2.3.2"
   },
   "dependencies": {
     "css-mq-parser": "0.0.3",
     "find-root": "1.0.0",
-    "genki": "0.0.5",
-    "lodash.assign": "4.2.0",
-    "lodash.find": "4.6.0",
+    "jquery": "3.2.1",
+    "jsdom": "11.0.0",
     "lodash.flatten": "4.4.0",
-    "lodash.includes": "4.3.0",
-    "lodash.some": "4.6.0",
+    "lodash.has": "4.5.2",
     "node-sass": "4.5.3",
     "postcss": "6.0.1",
     "sass-pathfinder": "0.0.5",

@@ -1,0 +1,16 @@
+// Components :: Navbar Brand
+
+// Dependencies
+@import "pack/seed-publish/_index";
+@import "../config";
+
+@include export(seed-navbar) {
+  .#{$seed-navbar-brand-namespace} {
+    box-sizing: border-box;
+    font-size: #{$seed-navbar-brand-font-size};
+    display: inline-block;
+    line-height: inherit;
+    margin-right: #{$seed-navbar-brand-margin-right};
+    white-space: nowrap;
+  }
+}
