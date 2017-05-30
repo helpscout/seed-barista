@@ -75,6 +75,17 @@ describe('utils', () => {
         expect(paths).to.include('root/wee');
         expect(paths[paths.length - 1]).to.include('seed');
       });
+
+      it('should include paths defined in src', () => {
+        const paths = fn({
+          src: 'float',
+          root: 'bear',
+        });
+
+        expect(paths).to.be.an('array');
+        expect(paths).to.have.lengthOf(1);
+        expect(paths[0]).to.include('bear/float');
+      });
     });
 
     describe('.seedPaths()', () => {
@@ -91,6 +102,32 @@ describe('utils', () => {
         expect(paths).to.not.be.empty;
         expect(paths).to.include('hello');
         expect(paths).to.have.lengthOf.at.least(1);
+      });
+    });
+
+    describe('.srcPaths()', () => {
+      const fn = resolve.srcPaths;
+
+      it('should return empty array by default', () => {
+        expect(fn()).to.be.an('array').and.be.empty;
+      });
+
+      it('should return empty array if args are invalid', () => {
+        expect(fn(true, 'awesome')).to.be.an('array').and.be.empty;
+      });
+
+      it('should an array of concatted root + src', () => {
+        const src = fn('root', 'src');
+
+        expect(src).to.be.an('array').and.not.be.empty;
+        expect(src).to.have.lengthOf(1);
+        expect(src[0]).to.equal('root/src');
+      });
+
+      it('should consolidate slashes in root and src', () => {
+        const src = fn('super/root/', 'src.scss');
+
+        expect(src[0]).to.equal('super/root/src.scss');
       });
     });
   });
