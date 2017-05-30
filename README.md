@@ -21,7 +21,7 @@ npm install seed-barista --save-dev
 
 ## Basic Usage
 
-### [Standard](/docs/api/standard.md)
+### [Static](/docs/api/static.md)
 
 Below is an example of how you can setup a [Mocha](https://mochajs.org/) test with Barista. A fast and simple way to test `.scss` output is to verify the rendered output matches against expected strings.
 
@@ -41,7 +41,7 @@ describe('harry component styles', function() {
 });
 ```
 
-Check out the full [API documentation](/docs/api/standard.md)
+Check out the full [API documentation](/docs/api/static.md)
 
 
 

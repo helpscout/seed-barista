@@ -6,7 +6,7 @@ import { expect } from 'chai';
 
 describe('acceptance', () => {
   describe('ES6', () => {
-    it('should execute standard test with ES6 import', () => {
+    it('should execute static test with ES6 import', () => {
       var styles = `
         .one { background: blue };
         .one.mod { background: red };

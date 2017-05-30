@@ -1,6 +1,6 @@
-# Standard
+# Static
 
-Barista's standard testing method is useful for writing lower-level unit tests.
+Barista's static testing method is useful for writing lower-level unit tests.
 
 ```javascript
 var expect = require('chai').expect;
@@ -29,7 +29,7 @@ describe('harry component styles', function() {
 
 
 
-## Standard API
+## Static API
 
 * **[`.at()`](rule/at.md)**
 * **[`.exists()`](rule/exists.md)**
