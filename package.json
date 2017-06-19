@@ -4,6 +4,7 @@
   "description": "Test helper for Seed CSS",
   "main": "index.js",
   "scripts": {
+    "dev": "npm run test:watch",
     "lint": "jshint index.js lib/",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test:coverage": "nyc --reporter=html --reporter=text mocha test/setup.mocha.js --recursive test/unit test/integration --reporter=dot",

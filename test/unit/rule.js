@@ -45,9 +45,9 @@ describe('rule', () => {
     const rule = new Rule(cssData).create('body');
 
     it('should not find rule if keyword is invalid', () => {
-      expect(rule.at('')).to.be.false;
-      expect(rule.at(true)).to.be.false;
-      expect(rule.at(500)).to.be.false;
+      expect(rule.at('').exists()).to.be.false;
+      expect(rule.at(true).exists()).to.be.false;
+      expect(rule.at(500).exists()).to.be.false;
     });
 
     it('should find rule based on string keyword', () => {
