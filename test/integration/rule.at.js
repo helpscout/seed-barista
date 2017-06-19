@@ -53,16 +53,16 @@ describe('output.rule', function() {
     });
 
     it('should return false if media query string is too vague', function() {
-      expect(rule.at('min')).to.be.false
+      expect(rule.at('min').exists()).to.be.false
     });
 
     it('should return false if media query doesn\'t exist', function() {
-      expect(rule.at('(min-width: 8000000em)')).to.be.false;
-      expect(rule.at('(max-width: 42em)')).to.be.false;
-      expect(rule.at('max-width: 42em')).to.be.false;
-      expect(rule.at(['max', '48em'])).to.be.false;
-      expect(rule.at(['4333px'])).to.be.false;
-      expect(rule.at(['4231', 'max', 'min', 'tv'])).to.be.false;
+      expect(rule.at('(min-width: 8000000em)').exists()).to.be.false;
+      expect(rule.at('(max-width: 42em)').exists()).to.be.false;
+      expect(rule.at('max-width: 42em').exists()).to.be.false;
+      expect(rule.at(['max', '48em']).exists()).to.be.false;
+      expect(rule.at(['4333px']).exists()).to.be.false;
+      expect(rule.at(['4231', 'max', 'min', 'tv']).exists()).to.be.false;
     });
   });
 });
