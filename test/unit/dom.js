@@ -28,7 +28,7 @@ describe('dom', () => {
   it('should be able to test CSS with $.css()', () => {
     const styles = `
       .twentyseven {
-        align-self: center;
+        background: red;
       }
     `;
     const dom = new DOM(styles);
@@ -37,7 +37,7 @@ describe('dom', () => {
 
     expect(el).to.exist;
     expect(el.length).to.equal(1);
-    expect(el.css('align-self')).to.equal('center');
+    expect(el.css('background')).to.equal('red');
   });
 
   it('should track styles being added (with Array)', () => {
