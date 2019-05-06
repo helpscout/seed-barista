@@ -85,16 +85,17 @@
     "seed-nav": "0.1.0",
     "seed-props": "0.3.1",
     "seed-publish": "0.2.0",
-    "sinon": "6.1.0"
+    "sinon": "6.1.0",
+    "tar": "4.4.8"
   },
   "dependencies": {
     "css-mq-parser": "^0.0.3",
     "find-root": "^1.1.0",
-    "jquery": "^3.2.1",
+    "jquery": "3.4.1",
     "jsdom": "^11.11.0",
     "lodash.flatten": "^4.4.0",
     "lodash.has": "^4.5.2",
-    "node-sass": "4.11.0",
+    "node-sass": "4.12.0",
     "postcss": "^7.0.5",
     "sass-pathfinder": "^0.0.5",
     "seed-harvester": "^0.1.5"
