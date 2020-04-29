@@ -92,7 +92,7 @@
   "dependencies": {
     "css-mq-parser": "^0.0.3",
     "find-root": "^1.1.0",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "jsdom": "^11.11.0",
     "lodash.flatten": "^4.4.0",
     "lodash.has": "^4.5.2",
